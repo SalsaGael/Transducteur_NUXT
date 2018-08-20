@@ -23,6 +23,9 @@ module.exports = {
   /*
   ** Build configuration
   */
+ modules: [
+  '@nuxtjs/pwa',
+],
  plugins: ['~plugins/vuetify.js'],
  css: [
   {
