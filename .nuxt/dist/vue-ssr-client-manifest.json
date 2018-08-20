@@ -7,8 +7,8 @@
     "pages_index.bb6a29a85637b2d65a44.js",
     "layouts_default.c57eeae3fba0a47510ff.js",
     "vendor.a824af436fbea8a5f33b.js",
-    "app.8153455baf0eb6016c49.js",
-    "manifest.ed57874257dec94a07c6.js",
+    "app.700c651eb23011d436ff.js",
+    "manifest.4e122c48e1892bf8fcab.js",
     "LICENSES",
     "pages_pr.26b35cde853fc1a0f392.js",
     "icons/icon_120.00000000000.png",
@@ -22,9 +22,9 @@
     "index.ssr.html"
   ],
   "initial": [
-    "manifest.ed57874257dec94a07c6.js",
+    "manifest.4e122c48e1892bf8fcab.js",
     "vendor.a824af436fbea8a5f33b.js",
-    "app.8153455baf0eb6016c49.js"
+    "app.700c651eb23011d436ff.js"
   ],
   "async": [
     "pages_tens.b3207671fcc9ea9a892f.js",
