@@ -40,12 +40,12 @@ div {
   justify-content: space-around;
 }
 
-h2 {
+h1 {
   font-size: 25px;
 }
 
 img {
-  width: 100%;
+  width: 50vw;
   max-width: 300px;
 }
 </style>

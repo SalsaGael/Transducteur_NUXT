@@ -1,48 +1,55 @@
-importScripts('/_nuxt/workbox.3de3418b.js')
+importScripts('/_nuxt/workbox.42554690.js')
 
-const workboxSW = new self.WorkboxSW({
+workbox.precaching.precacheAndRoute([
+  {
+    "url": "/_nuxt/app.fdea29ee39a9571f196c.js",
+    "revision": "a20f5541aef7e8aeb4dc4782a0e7d25a"
+  },
+  {
+    "url": "/_nuxt/layouts_default.26689ea0b1d61932e238.js",
+    "revision": "28bc834a822ccaa90e37516e2c93e88d"
+  },
+  {
+    "url": "/_nuxt/manifest.175b9eddeab3358166d1.js",
+    "revision": "3da905eddf655df9f0082659d0032ef3"
+  },
+  {
+    "url": "/_nuxt/pages_index.bc1786e0b0bb9e50d7c3.js",
+    "revision": "1bedf0603fb60528d76c61a57cc9fc69"
+  },
+  {
+    "url": "/_nuxt/pages_pa.9fc06b76c6af660c01e3.js",
+    "revision": "6f527a7102911ff14500f35edcfbe4ce"
+  },
+  {
+    "url": "/_nuxt/pages_pr.380a70545de125a19d49.js",
+    "revision": "3bfe7be4c2023b60f538fa192e222dd6"
+  },
+  {
+    "url": "/_nuxt/pages_tens.ad6ed1030ea63c4e2ee0.js",
+    "revision": "4ff923517bb34988427dfbd35764c7de"
+  },
+  {
+    "url": "/_nuxt/vendor.fe9ec9874f4b8c776746.js",
+    "revision": "5969fc68230536eb9c2e8ca323b8995d"
+  }
+], {
   "cacheId": "Nuxt",
-  "clientsClaim": true,
-  "directoryIndex": "/"
+  "directoryIndex": "/",
+  "cleanUrls": false
 })
 
-workboxSW.precache([
-  {
-    "url": "/_nuxt/app.7c7cb0dedabf04e963d6.js",
-    "revision": "35d473b5ca4724c177981083b0581517"
-  },
-  {
-    "url": "/_nuxt/layouts_default.1e07cc1840b0b846b305.js",
-    "revision": "4d5fdf8897a58d80db14ffb0122f5814"
-  },
-  {
-    "url": "/_nuxt/manifest.889782810021d2849a95.js",
-    "revision": "7aecda574b74e8e05eeeb6978fea8a6d"
-  },
-  {
-    "url": "/_nuxt/pages_index.0e3c6656431456e45ee6.js",
-    "revision": "82a07d77efdd0c0ca0124b629a77fc4a"
-  },
-  {
-    "url": "/_nuxt/pages_pa.b1db285c11f7f40d4080.js",
-    "revision": "b3aa43a77404475a4838409b7b88f193"
-  },
-  {
-    "url": "/_nuxt/pages_pr.cf7e2c6346ba52635743.js",
-    "revision": "4f71c2e4a0b59bcd27582be50b39790b"
-  },
-  {
-    "url": "/_nuxt/pages_tens.760a262c2f2742c5f440.js",
-    "revision": "054b455cac84142f20b5941ca30778a2"
-  },
-  {
-    "url": "/_nuxt/vendor.836ac488a4eff5811077.js",
-    "revision": "bf0e77d960e9381f9ab3a87977ae4119"
-  }
-])
 
 
-workboxSW.router.registerRoute(new RegExp('/_nuxt/.*'), workboxSW.strategies.cacheFirst({}), 'GET')
+workbox.clientsClaim()
+workbox.skipWaiting()
 
-workboxSW.router.registerRoute(new RegExp('/.*'), workboxSW.strategies.networkFirst({}), 'GET')
+
+workbox.routing.registerRoute(new RegExp('/_nuxt/.*'), workbox.strategies.cacheFirst({}), 'GET')
+
+workbox.routing.registerRoute(new RegExp('/.*'), workbox.strategies.networkFirst({}), 'GET')
+
+
+
+
 

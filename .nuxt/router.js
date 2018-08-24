@@ -3,10 +3,10 @@ import Router from 'vue-router'
 
 Vue.use(Router)
 
-const _246a1a47 = () => import('..\\pages\\tens.vue' /* webpackChunkName: "pages_tens" */).then(m => m.default || m)
-const _76226dfc = () => import('..\\pages\\pa.vue' /* webpackChunkName: "pages_pa" */).then(m => m.default || m)
-const _74434eda = () => import('..\\pages\\pr.vue' /* webpackChunkName: "pages_pr" */).then(m => m.default || m)
-const _e83a2a5e = () => import('..\\pages\\index.vue' /* webpackChunkName: "pages_index" */).then(m => m.default || m)
+const _26e7430f = () => import('..\\pages\\tens.vue' /* webpackChunkName: "pages_tens" */).then(m => m.default || m)
+const _96a0f86c = () => import('..\\pages\\pa.vue' /* webpackChunkName: "pages_pa" */).then(m => m.default || m)
+const _94c1d94a = () => import('..\\pages\\pr.vue' /* webpackChunkName: "pages_pr" */).then(m => m.default || m)
+const _4dea49ee = () => import('..\\pages\\index.vue' /* webpackChunkName: "pages_index" */).then(m => m.default || m)
 
 
 
@@ -68,22 +68,22 @@ export function createRouter () {
     routes: [
 		{
 			path: "/tens",
-			component: _246a1a47,
+			component: _26e7430f,
 			name: "tens"
 		},
 		{
 			path: "/pa",
-			component: _76226dfc,
+			component: _96a0f86c,
 			name: "pa"
 		},
 		{
 			path: "/pr",
-			component: _74434eda,
+			component: _94c1d94a,
 			name: "pr"
 		},
 		{
 			path: "/",
-			component: _e83a2a5e,
+			component: _4dea49ee,
 			name: "index"
 		}
     ],

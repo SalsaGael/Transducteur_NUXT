@@ -3,7 +3,7 @@ module.exports = {
    ** Headers of the page
    */
   head: {
-    title: 'Nuxt Labo',
+    title: 'Transducteur Nuxt Beta',
     meta: [{
         charset: 'utf-8'
       },

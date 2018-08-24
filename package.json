@@ -4,6 +4,12 @@
   "description": "Nuxt.js project",
   "author": "",
   "private": true,
+  "config": {
+    "nuxt": {
+      "host": "0.0.0.0",
+      "port": "3333"
+    }
+  },
   "scripts": {
     "dev": "nuxt",
     "build": "nuxt build",
@@ -13,11 +19,11 @@
     "precommit": "npm run lint"
   },
   "dependencies": {
-    "@nuxtjs/pwa": "^2.0.8",
+    "@nuxtjs/pwa": "^2.3.2",
     "nuxt": "^1.4.2",
     "stylus": "^0.54.5",
     "stylus-loader": "^3.0.2",
-    "vuetify": "^1.1.13",
+    "vuetify": "^1.1.14",
     "vuex": "^3.0.1"
   },
   "devDependencies": {

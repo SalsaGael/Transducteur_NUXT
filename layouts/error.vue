@@ -1,7 +1,7 @@
 <template>
    <section class="container">
 <div>
-  <img src="favicon.ico">
+  <img src="icon.png">
     <h1 v-if="error.statusCode === 404">Page non trouvée</h1>
     <h1 v-else>Une erreur s'est produite</h1>
 </div>  
@@ -15,13 +15,14 @@
 
 <script>
 export default {
-  props: ['error'],
-  layout: 'blog' // vous pouvez définir une mise en page personnalisée pour la page d'erreur
-}
+  props: ["error"],
+  layout: "blog" // vous pouvez définir une mise en page personnalisée pour la page d'erreur
+};
 </script>
 
 <style scoped>
-.container, div {
+.container,
+div {
   display: flex;
   flex-direction: column;
   flex-wrap: nowrap;

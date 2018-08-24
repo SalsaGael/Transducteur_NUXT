@@ -77,13 +77,14 @@
 				</button>
 				<a> Me payer un café</a>
 			</li>
-            <li id="" class="m-4" v-if="isShare()">
-				<button class="btn btn-dark theme-icon" @Click="share()">
+      <no-ssr v-if="isShare()">
+      <li id="" class="m-4">
+				<button class="btn btn-dark theme-icon" @click="share()">
 					<i class="fa fa-share" aria-hidden="true"></i>
 				</button>
 				<a> Partager</a>
 			</li>
-
+      </no-ssr>
 		</ul>
 	</div>
 
@@ -156,8 +157,10 @@ export default {
       }
     },
     isShare() {
-      if (navigator.share) {
-        return true;
+      if (process.client) {
+        if (navigator.share) {
+          return true;
+        }
       }
     },
     share() {
@@ -305,20 +308,18 @@ table {
   border-spacing: 0;
 }
 
-.div-body,
+html,
 body,
-html {
-  background-color: white;
-  position: fixed;
+.div-body {
+  overflow-x: hidden;
+  overflow-y: hidden;
   display: flex;
   flex-direction: column;
-
+  flex-wrap: nowrap;
+  align-content: space-between;
   width: 100vw;
   height: 100vh;
-  font-family: sans-serif;
-  overflow-y: hidden;
-  overflow-x: hidden;
-  z-index: 5;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
 }
 
 nav {
@@ -336,19 +337,6 @@ a:checked {
   text-decoration: none;
   color: inherit;
 }
-.container {
-  display: flex;
-  flex-direction: column;
-  flex-wrap: nowrap;
-  justify-content: center;
-  align-content: space-around;
-  overflow-x: hidden;
-  overflow-y: hidden;
-}
-.blocset {
-  overflow-y: auto;
-  touch-action: pan-y;
-}
 
 #footer {
   display: flex;
@@ -360,7 +348,13 @@ a:checked {
   height: 48px;
   min-height: 48px;
 }
-
+.container {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  align-content: center;
+  justify-content: space-around;
+}
 #menu {
   position: fixed;
   display: flex;
