@@ -2,15 +2,15 @@
   "publicPath": "/_nuxt/",
   "all": [
     "icons/icon_64.00000000000.png",
-    "pages_pr.380a70545de125a19d49.js",
-    "pages_tens.ad6ed1030ea63c4e2ee0.js",
+    "pages_pr.97ff783378416b58581c.js",
+    "pages_tens.a70d6e1a2e79f974ac80.js",
     "pages_index.bc1786e0b0bb9e50d7c3.js",
-    "layouts_default.26689ea0b1d61932e238.js",
-    "vendor.fe9ec9874f4b8c776746.js",
-    "app.fdea29ee39a9571f196c.js",
-    "manifest.175b9eddeab3358166d1.js",
+    "layouts_default.05057bd84f19fdc01e7d.js",
+    "vendor.9efae42778b761aafd33.js",
+    "app.c61314a0a2ef1af7a9bf.js",
+    "manifest.7752d42ae465542aa41e.js",
     "LICENSES",
-    "pages_pa.9fc06b76c6af660c01e3.js",
+    "pages_pa.5ffcc2a6676a347c2245.js",
     "icons/icon_120.00000000000.png",
     "icons/icon_144.00000000000.png",
     "icons/icon_152.00000000000.png",
@@ -22,16 +22,16 @@
     "index.ssr.html"
   ],
   "initial": [
-    "manifest.175b9eddeab3358166d1.js",
-    "vendor.fe9ec9874f4b8c776746.js",
-    "app.fdea29ee39a9571f196c.js"
+    "manifest.7752d42ae465542aa41e.js",
+    "vendor.9efae42778b761aafd33.js",
+    "app.c61314a0a2ef1af7a9bf.js"
   ],
   "async": [
-    "pages_pr.380a70545de125a19d49.js",
-    "pages_tens.ad6ed1030ea63c4e2ee0.js",
+    "pages_pr.97ff783378416b58581c.js",
+    "pages_tens.a70d6e1a2e79f974ac80.js",
     "pages_index.bc1786e0b0bb9e50d7c3.js",
-    "layouts_default.26689ea0b1d61932e238.js",
-    "pages_pa.9fc06b76c6af660c01e3.js"
+    "layouts_default.05057bd84f19fdc01e7d.js",
+    "pages_pa.5ffcc2a6676a347c2245.js"
   ],
   "modules": {
     "30938186": [
@@ -442,6 +442,9 @@
     "ea0cf4be": [
       5
     ],
+    "596933a4": [
+      5
+    ],
     "3f4ad4b6": [
       5
     ],
@@ -464,6 +467,9 @@
       5
     ],
     "72aa441e": [
+      5
+    ],
+    "1df17f7b": [
       5
     ],
     "5c7b2c71": [
@@ -651,9 +657,6 @@
     ],
     "7cd2674c": [
       9
-    ],
-    "1df17f7b": [
-      5
     ],
     "7c71dd15": [
       9

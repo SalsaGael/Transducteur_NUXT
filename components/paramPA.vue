@@ -8,7 +8,7 @@
       <div class="input-group-prepend">
         <label class="input-group-text" for="fpaHT">Famille BT</label>
       </div>
-      <select id="fpaHT" class="custom-select" v-bind:value="this.$store.state.fpaHT" @change="update('fpaHT', $event)">
+      <select id="fpaHT" class="custom-select" v-bind:value="this.$store.state.fpaHT" @change="CHANGE_VALUE('fpaHT', $event)">
         <option value="0">Plage réglée</option>
         <option value="1">P1 602,2</option>
         <option value="2">P2 744,8</option>
@@ -29,7 +29,7 @@
         <label class="input-group-text" for="paMaxHT">Plage HT</label>
       </div>
       <input class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm" id='paMaxHT' type="number" v-bind:value="this.$store.state.paMaxHT"
-        @change="update('paMaxHT', $event)" />
+        @change="CHANGE_VALUE('paMaxHT', $event)" />
       <div class="input-group-append">
         <span class="input-group-text">± MW</span>
       </div>
@@ -39,7 +39,7 @@
       <div class="input-group-prepend">
         <label for="smaMinPA" class="input-group-text">Sortie</label>
       </div>
-      <select id='smaMin' class="custom-select" v-bind:value="this.$store.state.smaMinPA" @change="update('smaMinPA', $event)">
+      <select id='smaMin' class="custom-select" v-bind:value="this.$store.state.smaMinPA" @change="CHANGE_VALUE('smaMinPA', $event)">
         <option value="-20">-20</option>
         <option value="-10">-10</option>
         <option value="-5">-5</option>
@@ -47,7 +47,7 @@
         <option value="4">4</option>
       </select>
       <span class="input-group-text input-group-middle">à</span>
-      <select id='smaMaxPA' class="custom-select" v-bind:value="this.$store.state.smaMaxPA" @change="update('smaMaxPA', $event)">
+      <select id='smaMaxPA' class="custom-select" v-bind:value="this.$store.state.smaMaxPA" @change="CHANGE_VALUE('smaMaxPA', $event)">
         <option value="5">5</option>
         <option value="10">10</option>
         <option value="20">20</option>
@@ -62,8 +62,8 @@
 export default {
   components: {},
   methods: {
-    update(key, event) {
-      this.$store.commit("update", {
+    CHANGE_VALUE(key, event) {
+      this.$store.commit("CHANGE_VALUE", {
         path: [key],
         value: event.target.value
       });

@@ -8,7 +8,7 @@
         <div class="input-group-prepend">
             <label class="input-group-text text-light bg-secondary input-ant">Puissance HT</label>
         </div>
-        <input type="number" id="paHT" v-bind:value="this.$store.state.paHT" @change="update('paHT', $event)" placeholder="Entrez la valeur" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm">
+        <input type="number" id="paHT" v-bind:value="this.$store.state.paHT" @change="CHANGE_VALUE('paHT', $event)" placeholder="Entrez la valeur" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm">
         <div class="input-group-append">
     <span class="input-group-text text-light bg-secondary input-post">MW</span>
         </div>
@@ -18,7 +18,7 @@
         <div class="input-group-prepend">
            <label for="iaBT" class="input-group-text text-light bg-primary input-ant">Courant BT</label>
         </div>
-            <input type="number" id="iaBT" v-bind:value="this.$store.state.iaBT" @change="update('iaBT', $event)" placeholder="Entrez la valeur" class="form-control" aria-label="Small"
+            <input type="number" id="iaBT" v-bind:value="this.$store.state.iaBT" @change="CHANGE_VALUE('iaBT', $event)" placeholder="Entrez la valeur" class="form-control" aria-label="Small"
         aria-describedby="inputGroup-sizing-sm">
         <div class="input-group-append">
            <span class="input-group-text text-light bg-primary input-post">A</span>
@@ -29,7 +29,7 @@
         <div class="input-group-prepend">
             <label class="input-group-text text-light bg-success input-ant">Sortie procédé</label>
         </div>
-            <input type="number" id="sama" v-bind:value="this.$store.state.sama" @change="update('sama', $event)" placeholder="Entrez la valeur" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm">
+            <input type="number" id="sama" v-bind:value="this.$store.state.sama" @change="CHANGE_VALUE('sama', $event)" placeholder="Entrez la valeur" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm">
         <div class="input-group-append">
         <span class="input-group-text text-light bg-success input-post">mA</span>
         </div>
@@ -40,8 +40,8 @@
 export default {
   components: {},
   methods: {
-    update(key, event) {
-      this.$store.commit("update", {
+    CHANGE_VALUE(key, event) {
+      this.$store.commit("CHANGE_VALUE", {
         path: [key],
         value: event.target.value
       });

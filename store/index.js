@@ -1,9 +1,11 @@
-import Vuex from 'vuex'
+import Vuex from "vuex";
 
 const createStore = () => {
   return new Vuex.Store({
-
+    strict: true,
     state: {
+      smaPlageU: "",
+      bvMin: "",
       start: "calcpa",
       theme: "light",
       themeselect: "light",
@@ -20,25 +22,33 @@ const createStore = () => {
       smaMaxPR: "20",
       fuHT: "1",
       smaPlage: "20",
-      smaMinU: "4",
-      smaMaxU: "20",
       smaPlageU: "16",
-      paHT: "444"
+      smaMinU: "4",
+      smaMaxU: "20"
     },
     mutations: {
-      update(state, {
-        path,
-        value
-      }) {
+      ADD(state, name, value) {
         const parent = ((state, key) => {
-          return state.key
-        }, state)
-        parent[path[path.length - 1]] = value
+          return state.key;
+        },
+        state);
+        parent[name] = value;
+      },
+      CHANGE_VALUE(state, { path, value }) {
+        const parent = ((state, key) => {
+          return state.key;
+        },
+        state);
+        parent[path[path.length - 1]] = value;
+      }
+    },
+    actions: {
+      ADD(context, name, value) {
+        console.log("actions " + name + " " + value);
+        this.commit("ADD", name, value);
       }
     }
+  });
+};
 
-
-  })
-}
-
-export default createStore
+export default createStore;

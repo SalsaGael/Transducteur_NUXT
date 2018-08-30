@@ -3,7 +3,7 @@
         <div>
         <calcpr></calcpr>
         </div>
-        <div>
+        <div class="param">
         <paramtt></paramtt>
         <paramtc></paramtc>
         <parampr></parampr>
@@ -18,15 +18,12 @@ import paramtc from "@/components/paramTC.vue";
 import parampr from "@/components/paramPR.vue";
 
 export default {
-  data() {},
   components: {
     calcpr,
     paramtt,
     paramtc,
     parampr
-  },
-  methods: {},
-  computed: {}
+  }
 };
 </script>
 

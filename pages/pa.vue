@@ -3,7 +3,7 @@
         <div>
         <calcpa></calcpa>
         </div>
-        <div>
+        <div class="param">
         <paramtt></paramtt>
         <paramtc></paramtc>
         <parampa></parampa>
@@ -17,16 +17,12 @@ import paramtc from "@/components/paramTC.vue";
 import parampa from "@/components/paramPA.vue";
 import calcpa from "@/components/calcPA.vue";
 export default {
-  data() {
-    return {};
-  },
   components: {
     calcpa,
     paramtt,
     paramtc,
     parampa
-  },
-  methods: {}
+  }
 };
 </script>
 

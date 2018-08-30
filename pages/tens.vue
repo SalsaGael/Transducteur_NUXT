@@ -1,7 +1,7 @@
 <template>
     <section class="container">
     <calcu></calcu>
-    <div>
+    <div class="param">
     <paramtt></paramtt>
     <paramu></paramu>
     </div>
@@ -14,9 +14,6 @@ import paramtt from "@/components/paramTT.vue";
 import paramu from "@/components/paramU.vue";
 
 export default {
-  data() {},
-  methods: {},
-  computed: {},
   components: {
     calcu,
     paramtt,

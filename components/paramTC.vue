@@ -6,24 +6,21 @@
 
     <div class="input-group mb-2">
       <div class="input-group-prepend">
-        <label class="input-group-text" for="pTC">Courant primaire TC</label>
+        <label class="input-group-text" for="pTC">Rapport</label>
       </div>
       <input class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm" id='pTC' type="number" v-bind:value="this.$store.state.pTC"
-        @change="update('pTC', $event)" />
-
+        @change="CHANGE_VALUE('pTC', $event)" />
       <div class="input-group-append">
-        <label class="input-group-text" for="pTC">A</label>
+        <span class="input-group-text input-group-middle">/</span>
       </div>
-    </div>
-
-    <div class="input-group mb-2">
-      <div class="input-group-prepend">
-        <label for="sTC" class="input-group-text">Secondaire TC</label>
-      </div>
-      <select class="custom-select" id='sTC' v-bind:value="this.$store.state.sTC" @change="update('sTC', $event)">
-        <option value="1">Circuit 1 A</option>
-        <option value="5">Circuit 5 A</option>
+     <select class="custom-select" id='sTC' v-bind:value="this.$store.state.sTC" @change="CHANGE_VALUE('sTC', $event)">
+        <option value="1">1</option>
+        <option value="5">5</option>
       </select>
+      <div class="input-group-apppend">
+        <label for="sTC" class="input-group-text">A</label>
+      </div>
+   
     </div>
     </section>
   </template>
@@ -31,8 +28,8 @@
 export default {
   components: {},
   methods: {
-    update(key, event) {
-      this.$store.commit("update", {
+    CHANGE_VALUE(key, event) {
+      this.$store.commit("CHANGE_VALUE", {
         path: [key],
         value: event.target.value
       });

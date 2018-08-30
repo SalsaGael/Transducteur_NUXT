@@ -119,7 +119,7 @@
 
 <script>
 export default {
-  data() {
+  data: function() {
     return {
       timer: false
     };
@@ -319,16 +319,20 @@ body,
   align-content: space-between;
   width: 100vw;
   height: 100vh;
-  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  font-family: sans-serif;
 }
 
 nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
   background-color: rgba(240, 240, 240, 0.95);
   border-bottom: 1px solid black;
   border-top: 1px solid black;
   color: black;
   min-height: 68px;
   height: 68px;
+  z-index: 5;
 }
 
 a,
@@ -347,6 +351,7 @@ a:checked {
   width: 100%;
   height: 48px;
   min-height: 48px;
+  z-index: 5;
 }
 .container {
   display: flex;
@@ -354,6 +359,9 @@ a:checked {
   flex-wrap: nowrap;
   align-content: center;
   justify-content: space-around;
+}
+.param {
+  overflow-y: auto;
 }
 #menu {
   position: fixed;

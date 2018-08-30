@@ -8,7 +8,7 @@
       <div class="input-group-prepend">
         <label class="input-group-text" for="fprHT">Famille BT</label>
       </div>
-      <select id="fprHT" class="custom-select" v-bind:value="this.$store.state.fprHT" @change="update('fprHT', $event)">
+      <select id="fprHT" class="custom-select" v-bind:value="this.$store.state.fprHT" @change="CHANGE_VALUE('fprHT', $event)">
         <option value="0">Plage réglée</option>
         <option value="1">Q1 303,1</option>
         <option value="2">Q2 372,4</option>
@@ -29,7 +29,7 @@
       <div class="input-group-prepend">
         <label class="input-group-text" for="prMaxHT">Plage HT</label>
       </div>
-      <input class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm" id='prMaxHT' type="number" v-bind:value="this.$store.state.prMaxHT" @change="update('prMaxHT', $event)"
+      <input class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm" id='prMaxHT' type="number" v-bind:value="this.$store.state.prMaxHT" @change="CHANGE_VALUE('prMaxHT', $event)"
       />
       <div class="input-group-append">
         <span class="input-group-text">± Mvar</span>
@@ -40,7 +40,7 @@
       <div class="input-group-prepend">
         <label for="smaMin" class="input-group-text">Sortie</label>
       </div>
-      <select id='smaMinPR' class="custom-select" v-bind:value="this.$store.state.smaMinPR" @change="update('smaMinPR', $event)">
+      <select id='smaMinPR' class="custom-select" v-bind:value="this.$store.state.smaMinPR" @change="CHANGE_VALUE('smaMinPR', $event)">
         <option value="-20">-20</option>
         <option value="-10">-10</option>
         <option value="-5">-5</option>
@@ -48,7 +48,7 @@
         <option value="4">4</option>
       </select>
       <span class="input-group-text input-group-middle">à</span>
-      <select id='smaMaxPR' class="custom-select" v-bind:value="this.$store.state.smaMaxPR" @change="update('smaMaxPR', $event)">
+      <select id='smaMaxPR' class="custom-select" v-bind:value="this.$store.state.smaMaxPR" @change="CHANGE_VALUE('smaMaxPR', $event)">
         <option value="5">5</option>
         <option value="10">10</option>
         <option value="20">20</option>
@@ -63,8 +63,8 @@
 export default {
   components: {},
   methods: {
-    update(key, event) {
-      this.$store.commit("update", {
+    CHANGE_VALUE(key, event) {
+      this.$store.commit("CHANGE_VALUE", {
         path: [key],
         value: event.target.value
       });

@@ -8,7 +8,7 @@
     <div class="input-group-prepend">
         <label class="input-group-text text-light bg-secondary input-ant">Puissance HT</label>
     </div>
-    <input type="number" id="prHT" v-bind:value="this.$store.state.prHT" @change="update('prHT', $event)" placeholder="Entrez la valeur" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm">
+    <input type="number" id="prHT" v-bind:value="this.$store.state.prHT" @change="CHANGE_VALUE('prHT', $event)" placeholder="Entrez la valeur" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm">
     <div class="input-group-append">
         <span class="input-group-text text-light bg-secondary input-post">Mvar</span>
     </div>
@@ -18,7 +18,7 @@
     <div class="input-group-prepend">
         <label for="irBT" class="input-group-text text-light bg-primary input-ant">Courant BT</label>
     </div>
-    <input type="number" id="irBT" v-bind:value="this.$store.state.irBT" @change="update('irBT', $event)" placeholder="Entrez la valeur" class="form-control" aria-label="Small"
+    <input type="number" id="irBT" v-bind:value="this.$store.state.irBT" @change="CHANGE_VALUE('irBT', $event)" placeholder="Entrez la valeur" class="form-control" aria-label="Small"
         aria-describedby="inputGroup-sizing-sm">
     <div class="input-group-append">
         <span class="input-group-text text-light bg-primary input-post">A</span>
@@ -29,7 +29,7 @@
     <div class="input-group-prepend">
         <label for="srma" class="input-group-text text-light bg-success input-ant">Sortie procédé</label>
     </div>
-    <input type="number" id="srma" v-bind:value="this.$store.state.srma" @change="update('srma', $event)" placeholder="Entrez la valeur" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm">
+    <input type="number" id="srma" v-bind:value="this.$store.state.srma" @change="CHANGE_VALUE('srma', $event)" placeholder="Entrez la valeur" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm">
     <div class="input-group-append">
         <span class="input-group-text text-light bg-success input-post">mA</span>
     </div>
@@ -40,8 +40,8 @@
 export default {
   components: {},
   methods: {
-    update(key, event) {
-      this.$store.commit("update", {
+    CHANGE_VALUE(key, event) {
+      this.$store.commit("CHANGE_VALUE", {
         path: [key],
         value: event.target.value
       });
