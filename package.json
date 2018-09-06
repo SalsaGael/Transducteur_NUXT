@@ -19,11 +19,11 @@
     "precommit": "npm run lint"
   },
   "dependencies": {
-    "@nuxtjs/pwa": "^2.3.2",
+    "@nuxtjs/pwa": "^2.4.0",
     "nuxt": "^1.4.2",
     "stylus": "^0.54.5",
     "stylus-loader": "^3.0.2",
-    "vuetify": "^1.1.14",
+    "vuetify": "^1.2.1",
     "vuex": "^3.0.1"
   },
   "devDependencies": {

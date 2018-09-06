@@ -2,15 +2,15 @@
   "publicPath": "/_nuxt/",
   "all": [
     "icons/icon_64.00000000000.png",
-    "pages_pr.97ff783378416b58581c.js",
-    "pages_tens.a70d6e1a2e79f974ac80.js",
+    "pages_pr.05d00ee29ecc14387fbc.js",
+    "pages_tens.b5158beb435415b3ed7e.js",
     "pages_index.bc1786e0b0bb9e50d7c3.js",
     "layouts_default.05057bd84f19fdc01e7d.js",
-    "vendor.9efae42778b761aafd33.js",
-    "app.c61314a0a2ef1af7a9bf.js",
-    "manifest.7752d42ae465542aa41e.js",
+    "vendor.c6a8c54a0f4fa3761f01.js",
+    "app.84f3fc2d3e21060adfb1.js",
+    "manifest.e5bfd23cc2b39811e745.js",
     "LICENSES",
-    "pages_pa.5ffcc2a6676a347c2245.js",
+    "pages_pa.cd304177ed1e059e7961.js",
     "icons/icon_120.00000000000.png",
     "icons/icon_144.00000000000.png",
     "icons/icon_152.00000000000.png",
@@ -22,16 +22,16 @@
     "index.ssr.html"
   ],
   "initial": [
-    "manifest.7752d42ae465542aa41e.js",
-    "vendor.9efae42778b761aafd33.js",
-    "app.c61314a0a2ef1af7a9bf.js"
+    "manifest.e5bfd23cc2b39811e745.js",
+    "vendor.c6a8c54a0f4fa3761f01.js",
+    "app.84f3fc2d3e21060adfb1.js"
   ],
   "async": [
-    "pages_pr.97ff783378416b58581c.js",
-    "pages_tens.a70d6e1a2e79f974ac80.js",
+    "pages_pr.05d00ee29ecc14387fbc.js",
+    "pages_tens.b5158beb435415b3ed7e.js",
     "pages_index.bc1786e0b0bb9e50d7c3.js",
     "layouts_default.05057bd84f19fdc01e7d.js",
-    "pages_pa.5ffcc2a6676a347c2245.js"
+    "pages_pa.cd304177ed1e059e7961.js"
   ],
   "modules": {
     "30938186": [
@@ -127,6 +127,9 @@
     "5199b824": [
       5
     ],
+    "73bcacf7": [
+      5
+    ],
     "61ec9f17": [
       1
     ],
@@ -170,6 +173,9 @@
       5
     ],
     "6b9c033c": [
+      5
+    ],
+    "0e558314": [
       5
     ],
     "0f41553c": [
@@ -442,10 +448,10 @@
     "ea0cf4be": [
       5
     ],
-    "596933a4": [
+    "3f4ad4b6": [
       5
     ],
-    "3f4ad4b6": [
+    "4bebe414": [
       5
     ],
     "7a44c84e": [
@@ -467,9 +473,6 @@
       5
     ],
     "72aa441e": [
-      5
-    ],
-    "1df17f7b": [
       5
     ],
     "5c7b2c71": [
@@ -517,6 +520,9 @@
     "777fd7aa": [
       1
     ],
+    "fc727684": [
+      5
+    ],
     "5c019095": [
       5
     ],
@@ -542,6 +548,15 @@
       5
     ],
     "791afa4e": [
+      5
+    ],
+    "e3fe5610": [
+      5
+    ],
+    "7c2eef81": [
+      5
+    ],
+    "1df17f7b": [
       5
     ],
     "27dbf503": [
@@ -580,14 +595,14 @@
     "5e3364f7": [
       5
     ],
+    "fc4019c2": [
+      5
+    ],
     "615441fc": [
       2
     ],
     "ebf49c18": [
       3
-    ],
-    "7c2eef81": [
-      5
     ],
     "66e764c4": [
       2

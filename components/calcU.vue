@@ -7,36 +7,36 @@
     </p>
     <div class="input-group mb-2">
         <div class="input-group-prepend">
-            <label for="uHT" class="input-group-text text-light bg-secondary input-ant">HT Triphasé</label>
+            <label for="inputUHT" class="input-group-text text-light bg-secondary input-ant">HT Triphasé</label>
         </div>
-        <input type="number" id="uHT" v-bind:value="this.$store.state.uHT" @change="CHANGE_VALUE('uHT', $event)" placeholder="Entrez la valeur" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm">
+        <input type="number" id="inputUHT" v-bind:value="Math.round(this.$store.state.inputUHT / 10) /100" @change="inputUHT('inputUHT', $event)" class="form-control" aria-label="inputSMAll" aria-describedby="inputGroup-sizing-sm">
         <div class="input-group-append">
         <span class="input-group-text text-light bg-secondary input-post">kV</span>
         </div>
     </div>
     <div class="input-group mb-2">
         <div class="input-group-prepend">
-            <label for="vHT" class="input-group-text text-light bg-primary input-ant">HT Monophasé</label>
+            <label for="inputVHT" class="input-group-text text-light bg-primary input-ant">HT Monophasé</label>
         </div>
-        <input type="number" id="vHT" v-bind:value="this.$store.state.vHT" @change="CHANGE_VALUE('vHT', $event)" placeholder="Entrez la valeur" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm">
+        <input type="number" id="inputVHT" v-bind:value="Math.round(this.$store.state.inputVHT / 10) / 100" @change="inputVHT('inputVHT', $event)" class="form-control" aria-label="inputSMAll" aria-describedby="inputGroup-sizing-sm">
         <div class="input-group-append">
             <span class="input-group-text text-light bg-primary input-post">kV</span>
         </div>
     </div>
     <div class="input-group mb-2">
         <div class="input-group-prepend">
-            <label for="vBT" class="input-group-text text-light bg-danger input-ant">BT Monophasé</label>
+            <label for="inputVBT" class="input-group-text text-light bg-danger input-ant">BT Monophasé</label>
         </div>
-        <input type="number" id="vBT" v-bind:value="this.$store.state.vBT" @change="CHANGE_VALUE('vBT', $event)" placeholder="Entrez la valeur" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm">
+        <input type="number" id="inputVBT" v-bind:value="Math.round(this.$store.state.inputVBT * 100) / 100" @change="inputVBT('inputVBT', $event)" class="form-control" aria-label="inputSMAll" aria-describedby="inputGroup-sizing-sm">
         <div class="input-group-append">
             <span class="input-group-text text-light bg-danger input-post">V</span>
         </div>
     </div>
     <div class="input-group mb-2">
         <div class="input-group-prepend">
-            <label for="suma" class="input-group-text text-light bg-success input-ant">Sortie procédé</label>
+            <label for="inputSMA" class="input-group-text text-light bg-success input-ant">Sortie procédé</label>
         </div>
-            <input type="number" id="suma" v-bind:value="this.$store.state.suma" @change="CHANGE_VALUE('suma', $event)" placeholder="Entrez la valeur" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm">
+            <input type="number" id="inputSMA" v-bind:value="Math.round(this.$store.state.inputSMA * 100) / 100" @change="inputSMA('inputSMA', $event)" class="form-control" aria-label="inputSMAll" aria-describedby="inputGroup-sizing-sm">
         <div class="input-group-append">
             <span class="input-group-text text-light bg-success input-post">mA</span>
         </div>
@@ -47,12 +47,37 @@
     <script>
 export default {
   components: {},
+  computed: {
+  
+  },
   methods: {
-    CHANGE_VALUE(key, event) {
+    changeValue(key, value) {
       this.$store.commit("CHANGE_VALUE", {
         path: [key],
-        value: event.target.value
+        value: value
       });
+    },
+    inputUHT(key, event) {
+      this.changeValue(key, event.target.value * 1000);
+      this.changeValue("inputVHT", event.target.value * 1000 / Math.sqrt(3));
+      this.changeValue(
+        "inputVBT",
+        event.target.value * 1000 / Math.sqrt(3) / this.$store.state.KU
+      );
+      this.changeValue(
+        "inputSMA",
+        (Math.pow(this.$store.state.inputVBT, 2) *
+          this.$store.getters.faMax) + this.$store.state.smaMinU    
+      );
+    },
+    inputVHT(key, event) {
+      this.changeValue(key, event.target.value * 1000);
+    },
+    inputVBT(key, event) {
+      this.changeValue(key, event.target.value);
+    },
+    inputSMA(key, event) {
+      this.changeValue(key, event.target.value);
     }
   }
 };

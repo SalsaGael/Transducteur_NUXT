@@ -8,7 +8,7 @@
       <div class="input-group-prepend">
         <label for="KU" class="input-group-text">Rapport</label>
       </div>
-      <select id="KU" class="custom-select" v-bind:value="$store.state.KU" @change="CHANGE_VALUE('KU', $event)">
+      <select id="KU" class="custom-select" v-bind:value="this.$store.state.KU" @change="changeValueEvent('KU', $event); calcU()">
         <option value="150">15 kV / 100 V</option>
         <option value="200">20 kV / 100 V</option>
         <option value="450">45 kV / 100 V</option>
@@ -27,7 +27,11 @@
 export default {
   components: {},
   methods: {
-    CHANGE_VALUE(key, event) {
+    calcU() {
+      this.$store.dispatch("CALC_U");
+      this.$store.dispatch("CALC_U_BT");
+    },
+    changeValueEvent(key, event) {
       this.$store.commit("CHANGE_VALUE", {
         path: [key],
         value: event.target.value
