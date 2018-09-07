@@ -1,7 +1,9 @@
 import Vuex from "vuex";
+import createPersistedState from "vuex-persistedstate";
 
 const createStore = () => {
   return new Vuex.Store({
+    plugin: [process.client ? createPersistedState() : console.log("Rendu Serveur")],
     state: {
       start: "calcpa",
       theme: "light",
@@ -40,7 +42,6 @@ const createStore = () => {
             return state.key;
           },
           state);
-        console.log(path)
         parent[path] = Number.parseFloat(value);
       }
     },
@@ -64,37 +65,45 @@ const createStore = () => {
           path: "uBTMax",
           value: this.state.uMax / this.state.KU
         });
-      },
+      }
     },
     getters: {
       smaPlageU(state) {
-        return state.smaMaxU - state.smaMinU
+        return state.smaMaxU - state.smaMinU;
       },
       bvMin(state) {
-        return state.uMin / state.KU / Math.sqrt(3)
+        return state.uMin / state.KU / Math.sqrt(3);
       },
       bvMax(state) {
-        return state.uMax / state.KU / Math.sqrt(3)
+        return state.uMax / state.KU / Math.sqrt(3);
       },
       buMin(state) {
-        return state.uMax / state.KU
+        return state.uMax / state.KU;
       },
       buMax(state) {
-        return state.uMax / state.KU
+        return state.uMax / state.KU;
       },
       faMin(state, getters) {
-        return getters.smaPlageU * (1 - Math.pow(getters.bvMax, 2) / (Math.pow(getters.bvMax, 2) - Math.pow(getters.bvMin, 2)))
+        return (
+          getters.smaPlageU *
+          (1 -
+            Math.pow(getters.bvMax, 2) /
+            (Math.pow(getters.bvMax, 2) - Math.pow(getters.bvMin, 2)))
+        );
       },
       faMax(state, getters) {
-        return getters.smaPlageU / (Math.pow(getters.bvMax, 2) - Math.pow(getters.bvMin, 2))
+        return (
+          getters.smaPlageU /
+          (Math.pow(getters.bvMax, 2) - Math.pow(getters.bvMin, 2))
+        );
       },
       faMoo(state, getters) {
-        return (getters.smaPlageU - getters.faMin) / getters.faMax
+        return (getters.smaPlageU - getters.faMin) / getters.faMax;
       },
       faTot(state, getters) {
-        return Math.sqrt(getters.faMoo)
+        return Math.sqrt(getters.faMoo);
       }
-  }
+    }
   });
 };
 

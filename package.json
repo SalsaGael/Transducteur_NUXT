@@ -19,12 +19,13 @@
     "precommit": "npm run lint"
   },
   "dependencies": {
-    "@nuxtjs/pwa": "^2.4.0",
+    "@nuxtjs/pwa": "^2.5.0",
     "nuxt": "^1.4.2",
     "stylus": "^0.54.5",
     "stylus-loader": "^3.0.2",
-    "vuetify": "^1.2.1",
-    "vuex": "^3.0.1"
+    "vuetify": "^1.2.3",
+    "vuex": "^3.0.1",
+    "vuex-persistedstate": "^2.5.4"
   },
   "devDependencies": {
     "babel-eslint": "^8.2.1",

@@ -180,6 +180,8 @@
 
 /*! ../../stylus/components/_breadcrumbs.styl */
 
+/*! ../../mixins/themeable */
+
 /*!*********************************************************!*\
   !*** ./src/components/VBreadcrumbs/VBreadcrumbsItem.js ***!
   \*********************************************************/
@@ -724,7 +726,7 @@
 
 /*! ../../util/helpers */
 
-/*! ../../util/SlotProvider */
+/*! ../../util/ThemeProvider */
 
 /*!*****************************************!*\
   !*** ./src/components/VDialog/index.js ***!
@@ -1162,7 +1164,7 @@
 
 /*! ../../util/helpers */
 
-/*! ../../util/SlotProvider */
+/*! ../../util/ThemeProvider */
 
 /*!***************************************!*\
   !*** ./src/components/VMenu/index.js ***!
@@ -3058,13 +3060,15 @@
 
 /*! no static exports found */
 
-/*!**********************************!*\
-  !*** ./src/util/SlotProvider.ts ***!
-  \**********************************/
+/*!***********************************!*\
+  !*** ./src/util/ThemeProvider.ts ***!
+  \***********************************/
 
 /*! exports provided: default */
 
-/*! vue */
+/*! ../mixins/themeable */
+
+/*! ./mixins */
 
 /*!*******************************************!*\
   !*** ./src/util/color/transformCIELAB.ts ***!

@@ -61,7 +61,12 @@ module.exports = {
     "dir": "ltr",
     "description": "Calculette rapide de conversion pour tranducteur de mesure"
   },
-  plugins: ['~plugins/vuetify.js'],
+  plugins: [{
+      src: '~plugins/localStorage.js',
+      ssr: false
+    },
+    '~plugins/vuetify.js'
+  ],
   css: [{
     src: '~/assets/css/app.styl',
     lang: 'styl'

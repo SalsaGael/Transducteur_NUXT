@@ -13,6 +13,8 @@ import { createStore } from './store.js'
 
 /* Plugins */
 import nuxt_plugin_swplugin_656c7192 from 'nuxt_plugin_swplugin_656c7192' // Source: ./sw.plugin.js (ssr: false)
+import nuxt_plugin_nuxticons_46cdfc6f from 'nuxt_plugin_nuxticons_46cdfc6f' // Source: ./nuxt-icons.js
+import nuxt_plugin_localStorage_0afba2b0 from 'nuxt_plugin_localStorage_0afba2b0' // Source: ..\\plugins\\localStorage.js (ssr: false)
 import nuxt_plugin_vuetify_512965c0 from 'nuxt_plugin_vuetify_512965c0' // Source: ..\\plugins\\vuetify.js
 
 
@@ -152,10 +154,12 @@ async function createApp (ssrContext) {
 
   // Plugin execution
   
+  if (typeof nuxt_plugin_nuxticons_46cdfc6f === 'function') await nuxt_plugin_nuxticons_46cdfc6f(app.context, inject)
   if (typeof nuxt_plugin_vuetify_512965c0 === 'function') await nuxt_plugin_vuetify_512965c0(app.context, inject)
   
   if (process.browser) { 
     if (typeof nuxt_plugin_swplugin_656c7192 === 'function') await nuxt_plugin_swplugin_656c7192(app.context, inject)
+    if (typeof nuxt_plugin_localStorage_0afba2b0 === 'function') await nuxt_plugin_localStorage_0afba2b0(app.context, inject)
   }
 
   // If server-side, wait for async component to be resolved first
