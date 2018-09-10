@@ -6,18 +6,18 @@
 
     <div class="input-group mb-2">
       <div class="input-group-prepend">
-        <label class="input-group-text" for="fpaHT">Famille BT</label>
+        <label class="input-group-text" for="fpaBT">Famille BT</label>
       </div>
-      <select id="fpaHT" class="custom-select" v-bind:value="this.$store.state.fpaHT" @change="CHANGE_VALUE('fpaHT', $event)">
+      <select id="fpaBT" class="custom-select" v-bind:value="this.$store.state.fpaBT" @change="changeValueEvent('fpaBT', $event)">
         <option value="0">Plage réglée</option>
-        <option value="1">P1 602,2</option>
-        <option value="2">P2 744,8</option>
-        <option value="3">P3 866</option>
-        <option value="4">P4 1039</option>
-        <option value="5">P5 1212</option>
-        <option value="6">P6 1464</option>
-        <option value="8">P8 1732</option>
-        <option value="9">P9 2148</option>
+        <option value="602.2">P1 602,2</option>
+        <option value="744.8">P2 744,8</option>
+        <option value="866">P3 866</option>
+        <option value="1039">P4 1039</option>
+        <option value="1212">P5 1212</option>
+        <option value="1464">P6 1464</option>
+        <option value="1732">P8 1732</option>
+        <option value="2148">P9 2148</option>
       </select>
       <div class="input-group-append">
         <span class="input-group-text">± W</span>
@@ -28,8 +28,8 @@
       <div class="input-group-prepend">
         <label class="input-group-text" for="paMaxHT">Plage HT</label>
       </div>
-      <input class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm" id='paMaxHT' type="number" v-bind:value="this.$store.state.paMaxHT"
-        @change="CHANGE_VALUE('paMaxHT', $event)" />
+      <input class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm" id='paMaxHT' type="number" v-bind:value="Math.round(this.$store.getters.paMaxHT / 10000) / 100"
+        @change="changepaMaxHT('paMaxHT', $event)" />
       <div class="input-group-append">
         <span class="input-group-text">± MW</span>
       </div>
@@ -39,7 +39,7 @@
       <div class="input-group-prepend">
         <label for="smaMinPA" class="input-group-text">Sortie</label>
       </div>
-      <select id='smaMin' class="custom-select" v-bind:value="this.$store.state.smaMinPA" @change="CHANGE_VALUE('smaMinPA', $event)">
+      <select id='smaMinPA' class="custom-select" v-bind:value="this.$store.state.smaMinPA" @change="changeValueEvent('smaMinPA', $event)">
         <option value="-20">-20</option>
         <option value="-10">-10</option>
         <option value="-5">-5</option>
@@ -47,7 +47,7 @@
         <option value="4">4</option>
       </select>
       <span class="input-group-text input-group-middle">à</span>
-      <select id='smaMaxPA' class="custom-select" v-bind:value="this.$store.state.smaMaxPA" @change="CHANGE_VALUE('smaMaxPA', $event)">
+      <select id='smaMaxPA' class="custom-select" v-bind:value="this.$store.state.smaMaxPA" @change="changeValueEvent('smaMaxPA', $event)">
         <option value="5">5</option>
         <option value="10">10</option>
         <option value="20">20</option>
@@ -62,11 +62,21 @@
 export default {
   components: {},
   methods: {
-    CHANGE_VALUE(key, event) {
+    changeValue(key, value) {
+      this.$store.commit("CHANGE_VALUE", {
+        path: [key],
+        value: value
+      });
+    },
+    changeValueEvent(key, event) {
       this.$store.commit("CHANGE_VALUE", {
         path: [key],
         value: event.target.value
       });
+    },
+    changepaMaxHT(key, event) {
+      this.changeValueEvent(key, event);
+      this.changeValue("fpaBT", 0);
     }
   }
 };

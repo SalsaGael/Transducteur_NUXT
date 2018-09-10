@@ -9,29 +9,30 @@ const createStore = () => {
       theme: "light",
       themeselect: "light",
       KU: 2200,
-      KI: 300,
-      KP: 660000,
       pTC: 1500,
       sTC: 5,
-      fpaHT: 4,
-      fprHT: 4,
+      fpaBT: 4,
+      fprBT: 4,
       smaMinPA: -20,
       smaMaxPA: 20,
       smaMinPR: -20,
       smaMaxPR: 20,
       fuHT: "1",
-      smaPlage: 20,
-      smaPlageU: 16,
       smaMinU: 4,
       smaMaxU: 20,
       uBTMin: 0,
       uBTMax: 124,
       uMin: 0,
       uMax: 272800,
+      inputPAHT: "Entrez la valeur",
+      inputIABT: "Entrez la valeur",
+      inputSAMA: "Entrez la valeur",
+      inputPRHT: "Entrez la valeur",
+      inputIRBT: "Entrez la valeur",
+      inputSRMA: "Entrez la valeur",
       inputUHT: "Entrez la valeur",
       inputVHT: "Entrez la valeur",
-      inputVBT: "Entrez la valeur",
-      inputSMA: "Entrez la valeur"
+      inputVBT: "Entrez la valeur"
     },
     mutations: {
       CHANGE_VALUE(state, {
@@ -68,6 +69,32 @@ const createStore = () => {
       }
     },
     getters: {
+      KI(state) {
+        return state.pTC / state.sTC
+              },
+      KP(state, getters) {
+        return state.KU * getters.KI
+              },
+      paMaxHT(state, getters) {
+if (state.fpaBT === 0) {
+  return state.paMaxHT * 1000000
+} else {
+  return state.fpaBT * getters.KP
+}
+      },
+      prMaxHT(state, getters) {
+if (state.fprBT === 0) {
+  return state.prMaxHT * 1000000
+} else {
+  return state.fprBT * getters.KP
+}
+      },
+      smaPlagePA(state){
+        return (state.smaMaxPA - state.smaMinPA) / 2
+      },
+      smaPlagePR(state){
+        return (state.smaMaxPR - state.smaMinPR) / 2
+      },
       smaPlageU(state) {
         return state.smaMaxU - state.smaMinU;
       },

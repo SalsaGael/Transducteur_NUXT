@@ -8,7 +8,7 @@
         <div class="input-group-prepend">
             <label class="input-group-text text-light bg-secondary input-ant">Puissance HT</label>
         </div>
-        <input type="number" id="paHT" v-bind:value="this.$store.state.paHT" @change="CHANGE_VALUE('paHT', $event)" placeholder="Entrez la valeur" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm">
+        <input type="number" id="inputPAHT" v-bind:value="Math.round(this.$store.state.inputPAHT / 10000) / 100" @change="inputPAHT('inputPAHT', $event)" placeholder="Entrez la valeur" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm">
         <div class="input-group-append">
     <span class="input-group-text text-light bg-secondary input-post">MW</span>
         </div>
@@ -18,7 +18,7 @@
         <div class="input-group-prepend">
            <label for="iaBT" class="input-group-text text-light bg-primary input-ant">Courant BT</label>
         </div>
-            <input type="number" id="iaBT" v-bind:value="this.$store.state.iaBT" @change="CHANGE_VALUE('iaBT', $event)" placeholder="Entrez la valeur" class="form-control" aria-label="Small"
+            <input type="number" id="inputIABT" v-bind:value="Math.round(this.$store.state.inputIABT*100) / 100" @change="inputIABT('inputIABT', $event)" placeholder="Entrez la valeur" class="form-control" aria-label="Small"
         aria-describedby="inputGroup-sizing-sm">
         <div class="input-group-append">
            <span class="input-group-text text-light bg-primary input-post">A</span>
@@ -29,7 +29,7 @@
         <div class="input-group-prepend">
             <label class="input-group-text text-light bg-success input-ant">Sortie procédé</label>
         </div>
-            <input type="number" id="sama" v-bind:value="this.$store.state.sama" @change="CHANGE_VALUE('sama', $event)" placeholder="Entrez la valeur" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm">
+            <input type="number" id="inputSRMA" v-bind:value="Math.round(this.$store.state.inputSRMA * 100) / 100" @change="inputSRMA('inputSRMA', $event)" placeholder="Entrez la valeur" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm">
         <div class="input-group-append">
         <span class="input-group-text text-light bg-success input-post">mA</span>
         </div>
@@ -40,11 +40,48 @@
 export default {
   components: {},
   methods: {
-    CHANGE_VALUE(key, event) {
+    changeValue(key, value) {
       this.$store.commit("CHANGE_VALUE", {
         path: [key],
-        value: event.target.value
+        value: value
       });
+    },
+    inputPAHT(key, event) {
+      this.changeValue(key, event.target.value * 1000000);
+      this.changeValue(
+        "inputIABT",
+        event.target.value *
+          1000000 /
+          (this.$store.state.KU * 100 * Math.sqrt(3)) /
+          this.$store.getters.KI
+      );
+      this.changeValue(
+        "inputSRMA",
+        event.target.value *
+          1000000 /
+          (this.$store.getters.paMaxHT / this.$store.getters.smaPlagePA)
+      ) +
+        ((this.$store.state.smaMinPA + this.$store.state.smaMaxPA) / 2);
+    },
+        inputIABT(key, event) {
+      this.changeValue(key, event.target.value);
+      this.changeValue(
+        "inputPAHT",
+        (event.target.value * this.$store.getters.KI) * (this.$store.state.KU * 100) * Math.sqrt(3)
+      );
+      this.changeValue(
+        "inputSRMA",
+        (this.$store.state.inputPAHT / (this.$store.getters.paMaxHT / this.$store.getters.smaPlagePA)) + ((this.$store.state.smaMinPA + this.$store.state.smaMaxPA) / 2))
+    },
+          inputSRMA(key, event) {
+      this.changeValue(key, event.target.value);
+      this.changeValue(
+        "inputPAHT",
+       (event.target.value - ((this.$store.state.smaMinPA + this.$store.state.smaMaxPA) / 2)) * (this.$store.getters.paMaxHT / this.$store.getters.smaPlagePA)
+      );
+      this.changeValue(
+        "inputIABT",
+    (event.target.value - ((this.$store.state.smaMinPA + this.$store.state.smaMaxPA) / 2)) * (this.$store.getters.paMaxHT / this.$store.getters.smaPlagePA) / (this.$store.state.KU * 100 * Math.sqrt(3)) / this.$store.getters.KI)
     }
   }
 };
