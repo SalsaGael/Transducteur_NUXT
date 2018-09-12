@@ -1,0 +1,455 @@
+html,
+body,
+div,
+span,
+applet,
+object,
+iframe,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+pre,
+a,
+abbr,
+acronym,
+address,
+big,
+cite,
+code,
+del,
+dfn,
+em,
+img,
+ins,
+kbd,
+q,
+s,
+samp,
+small,
+strike,
+strong,
+sub,
+sup,
+tt,
+var,
+b,
+u,
+i,
+center,
+dl,
+dt,
+dd,
+ol,
+ul,
+li,
+fieldset,
+form,
+label,
+legend,
+table,
+caption,
+tbody,
+tfoot,
+thead,
+tr,
+th,
+td,
+article,
+aside,
+canvas,
+details,
+embed,
+figure,
+figcaption,
+footer,
+header,
+hgroup,
+menu,
+nav,
+output,
+ruby,
+section,
+summary,
+time,
+mark,
+audio,
+video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+}
+
+/* HTML5 display-role reset for older browsers */
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+menu,
+nav,
+section {
+  display: block;
+}
+
+body {
+  line-height: 1;
+}
+
+ol,
+ul {
+  list-style: none;
+}
+
+blockquote,
+q {
+  quotes: none;
+}
+
+blockquote:before,
+blockquote:after,
+q:before,
+q:after {
+  content: "";
+  content: none;
+}
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+html,
+body,
+.div-body {
+  --main-bg-color: rgba(240, 240, 240, 0.95);
+  overflow-x: hidden;
+  overflow-y: hidden;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  align-content: space-between;
+  width: 100vw;
+  height: 100vh;
+  font-family: sans-serif;
+}
+
+a,
+a:hover,
+a:checked {
+  text-decoration: none;
+  color: inherit;
+}
+
+
+
+.container {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  align-content: center;
+  justify-content: space-around;
+}
+
+.param {
+  overflow-y: auto;
+}
+
+#menu {
+  position: fixed;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  width: 245px;
+  top: 68px;
+  bottom: 48px;
+  overflow-y: auto;
+  overflow-x: hidden;
+  background-color: rgba(240, 240, 240, 0.95);
+  color: black;
+  transform: translateX(-250px);
+  transition: 0.6s;
+  z-index: 10;
+}
+
+.show {
+  transform: translateX(0px) !important;
+  transition: all 1s ease-in-out;
+}
+
+.disapear {
+  display: none !important;
+}
+
+.form-control,
+.custom-select,
+.input-group-text,
+.input-group-middle {
+  border: 1px solid gainsboro;
+  font-size: auto;
+  color: #000;
+}
+
+.form-control,
+.input-group-text,
+.input-group-middle {
+  padding-left: 1em;
+  padding-right: 1em;
+}
+
+.bg-primary,
+.bg-secondary,
+.bg-success,
+.bg-danger,
+.bg-dark {
+  border: 0;
+}
+
+.input-group-middle {
+  border-left: 0;
+  border-right: 0;
+}
+
+.input-group-middle {
+  border-radius: 0;
+}
+
+#theme {
+  text-decoration: none;
+  border: 0px;
+  width: 50%;
+}
+
+.theme-select {
+  height: 42px !important;
+}
+
+.theme-icon {
+  height: 42px !important;
+  width: 42px !important;
+}
+
+/* Extra small devices (portrait phones, less than 576px) */
+
+/* No media query since this is the default in Bootstrap */
+
+/* Small devices (landscape phones, 576px and up) */
+
+@media (min-width: 200px) {
+
+  .input-group-text,
+  .input-group-middle,
+  .form-control,
+  .custom-select {
+    height: 1.9em;
+    padding: 0px 5px 0px 5px;
+  }
+
+  #titleAppShort {
+    display: block;
+  }
+
+  #titleAppMedium {
+    display: none;
+  }
+
+  #titleApp {
+    display: none;
+  }
+
+  .btn-origin {
+    display: none;
+  }
+
+  .btn-reduct {
+    display: block;
+  }
+
+  .input-ant {
+    width: 7.5em;
+  }
+
+  .input-post {
+    width: 2.8em;
+  }
+}
+
+/* Medium devices (medium phone, 360px and up) */
+
+@media (min-width: 360px) {
+
+  .input-group-text,
+  .input-group-middle,
+  .form-control,
+  .custom-select {
+    height: 2.5em;
+    padding: 0px 10px 0px 10px;
+  }
+
+  #titleAppShort {
+    display: block;
+  }
+
+  #titleAppMedium {
+    display: none;
+  }
+
+  #titleApp {
+    display: none;
+  }
+
+  .btn-origin {
+    display: none;
+  }
+
+  .btn-reduct {
+    display: block;
+  }
+
+  .input-ant {
+    width: 8.2em;
+  }
+
+  .input-post {
+    width: 3.5em;
+  }
+}
+
+/* Medium devices (large phone, 375px and up) */
+
+@media (min-width: 375px) {
+
+  .form-control,
+  .custom-select,
+  .input-group-text,
+  .input-group-middle {
+    height: 2.7em;
+  }
+
+  #titleAppShort {
+    display: none;
+  }
+
+  #titleAppMedium {
+    display: block;
+  }
+
+  #titleApp {
+    display: none;
+  }
+
+  .btn-origin {
+    display: none;
+  }
+
+  .btn-reduct {
+    display: block;
+  }
+}
+
+/* Medium devices (tablets, 400px and up) */
+
+@media (min-width: 400px) {
+
+  .form-control,
+  .custom-select,
+  .input-group-text,
+  .input-group-middle {
+    height: 3em;
+  }
+
+  #titleAppShort {
+    display: none;
+  }
+
+  #titleAppMedium {
+    display: block;
+  }
+
+  #titleApp {
+    display: none;
+  }
+
+  .btn-origin {
+    display: none;
+  }
+
+  .btn-reduct {
+    display: block;
+  }
+}
+
+/* Large devices (desktops, 992px and up) */
+
+@media (min-width: 992px) {
+
+  .form-control,
+  .custom-select,
+  .input-group-text,
+  .input-group-middle {
+    height: 3.2em;
+  }
+
+  #titleAppShort {
+    display: none;
+  }
+
+  #titleAppMedium {
+    display: none;
+  }
+
+  #titleApp {
+    display: block;
+  }
+
+  .btn-origin {
+    display: block;
+  }
+
+  .btn-reduct {
+    display: none;
+  }
+}
+
+/* Extra large devices (large desktops, 1200px and up) */
+
+@media (min-width: 1200px) {
+
+  .form-control,
+  .custom-select,
+  .input-group-text,
+  .input-group-middle {
+    height: 3.4em;
+  }
+
+  #titleAppShort {
+    display: none;
+  }
+
+  #titleAppMedium {
+    display: none;
+  }
+
+  #titleApp {
+    display: block;
+  }
+
+  .btn-origin {
+    display: block;
+  }
+
+  .btn-reduct {
+    display: none;
+  }
+}

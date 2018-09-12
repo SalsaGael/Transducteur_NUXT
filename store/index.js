@@ -5,9 +5,8 @@ const createStore = () => {
   return new Vuex.Store({
     plugin: [process.client ? createPersistedState() : console.log("Rendu Serveur")],
     state: {
-      start: "calcpa",
-      theme: "light",
-      themeselect: "light",
+      start: "pa",
+      theme: "default",
       KU: 2200,
       pTC: 1500,
       sTC: 5,
@@ -44,6 +43,16 @@ const createStore = () => {
           },
           state);
         parent[path] = Number.parseFloat(value);
+      },
+      CHANGE_ENTRY(state, {
+        path,
+        value
+      }) {
+        const parent = ((state, key) => {
+            return state.key;
+          },
+          state);
+        parent[path] = (value);
       }
     },
     actions: {
@@ -71,28 +80,28 @@ const createStore = () => {
     getters: {
       KI(state) {
         return state.pTC / state.sTC
-              },
+      },
       KP(state, getters) {
         return state.KU * getters.KI
-              },
+      },
       paMaxHT(state, getters) {
-if (state.fpaBT === 0) {
-  return state.paMaxHT * 1000000
-} else {
-  return state.fpaBT * getters.KP
-}
+        if (state.fpaBT === 0) {
+          return state.paMaxHT * 1000000
+        } else {
+          return state.fpaBT * getters.KP
+        }
       },
       prMaxHT(state, getters) {
-if (state.fprBT === 0) {
-  return state.prMaxHT * 1000000
-} else {
-  return state.fprBT * getters.KP
-}
+        if (state.fprBT === 0) {
+          return state.prMaxHT * 1000000
+        } else {
+          return state.fprBT * getters.KP
+        }
       },
-      smaPlagePA(state){
+      smaPlagePA(state) {
         return (state.smaMaxPA - state.smaMinPA) / 2
       },
-      smaPlagePR(state){
+      smaPlagePR(state) {
         return (state.smaMaxPR - state.smaMinPR) / 2
       },
       smaPlageU(state) {

@@ -3,10 +3,14 @@ import NuxtLoading from './components/nuxt-loading.vue'
 
 import '..\\assets\\css\\app.styl'
 
+import '..\\css\\main.css'
+
 
 let layouts = {
 
-  "_default": () => import('..\\layouts\\default.vue'  /* webpackChunkName: "layouts_default" */).then(m => m.default || m)
+  "_default": () => import('..\\layouts\\default.vue'  /* webpackChunkName: "layouts_default" */).then(m => m.default || m),
+
+  "_defaultDark": () => import('..\\layouts\\defaultDark.vue'  /* webpackChunkName: "layouts_defaultDark" */).then(m => m.default || m)
 
 }
 

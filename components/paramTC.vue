@@ -17,8 +17,8 @@
         <option value="1">1</option>
         <option value="5">5</option>
       </select>
-      <div class="input-group-apppend">
-        <label for="sTC" class="input-group-text">A</label>
+      <div class="input-group-append">
+        <span class="input-group-text">A</span>
       </div>
    
     </div>

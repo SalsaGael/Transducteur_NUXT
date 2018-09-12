@@ -68,9 +68,14 @@ module.exports = {
     '~plugins/vuetify.js'
   ],
   css: [{
-    src: '~/assets/css/app.styl',
-    lang: 'styl'
-  }],
+      src: '~/assets/css/app.styl',
+      lang: 'styl'
+    },
+    {
+      src: '~/css/main.css',
+      lang: 'css'
+    }
+  ],
   build: {
     vendor: ['vuetify'],
     /*vendor: ['vuetify'],
