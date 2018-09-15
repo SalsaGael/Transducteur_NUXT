@@ -57,7 +57,9 @@
       </div>
     </div>
   </section>
+  
 </template>
+
 <script>
 export default {
   components: {},
@@ -82,5 +84,5 @@ export default {
 };
 </script>
 
-<style scoped>
+<style>
 </style>

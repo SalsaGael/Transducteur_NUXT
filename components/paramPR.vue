@@ -1,4 +1,5 @@
 <template>
+
 <section>
     <p class="mb-1">
       <a>Paramètres Capteur Q</a>
@@ -14,7 +15,7 @@
         <option value="372.4">Q2 372,4</option>
         <option value="433">Q3 433</option>
         <option value="519.6">Q4 519,6</option>
-        <option value="602.2">Q5 602,2</option>
+        <option value="606.2">Q5 606,2</option>
         <option value="848.7">Q6 848,7</option>
         <option value="731.8">Q7 731,8</option>
         <option value="866">Q8 866</option>
@@ -58,7 +59,9 @@
       </div>
     </div>
 </section>
+
 </template>
+
 <script>
 export default {
   components: {},

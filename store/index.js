@@ -10,8 +10,8 @@ const createStore = () => {
       KU: 2200,
       pTC: 1500,
       sTC: 5,
-      fpaBT: 4,
-      fprBT: 4,
+      fpaBT: 1039,
+      fprBT: 519.6,
       smaMinPA: -20,
       smaMaxPA: 20,
       smaMinPR: -20,
@@ -31,7 +31,8 @@ const createStore = () => {
       inputSRMA: "Entrez la valeur",
       inputUHT: "Entrez la valeur",
       inputVHT: "Entrez la valeur",
-      inputVBT: "Entrez la valeur"
+      inputVBT: "Entrez la valeur",
+      inputSUMA: "Entrez la valeur",
     },
     mutations: {
       CHANGE_VALUE(state, {

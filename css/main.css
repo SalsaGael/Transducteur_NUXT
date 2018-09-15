@@ -132,7 +132,6 @@ table {
 html,
 body,
 .div-body {
-  --main-bg-color: rgba(240, 240, 240, 0.95);
   overflow-x: hidden;
   overflow-y: hidden;
   display: flex;
@@ -163,29 +162,6 @@ a:checked {
 
 .param {
   overflow-y: auto;
-}
-
-#menu {
-  position: fixed;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-around;
-  align-items: center;
-  width: 245px;
-  top: 68px;
-  bottom: 48px;
-  overflow-y: auto;
-  overflow-x: hidden;
-  background-color: rgba(240, 240, 240, 0.95);
-  color: black;
-  transform: translateX(-250px);
-  transition: 0.6s;
-  z-index: 10;
-}
-
-.show {
-  transform: translateX(0px) !important;
-  transition: all 1s ease-in-out;
 }
 
 .disapear {
