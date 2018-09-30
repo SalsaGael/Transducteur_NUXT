@@ -1,36 +1,59 @@
 <template>
-
-<section>
-  <p class="mb-1">
-      <a>Paramètres TC</a>
-  </p>
-
-  <div class="input-group mb-2">
-    <div class="input-group-prepend">
-      <label class="input-group-text" for="pTC">Rapport</label>
-    </div>
-    <input class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm" id='pTC' type="number" v-bind:value="this.$store.state.pTC"
-        @change="CHANGE_VALUE('pTC', $event)" />
-    <div class="input-group-append">
-      <span class="input-group-text input-group-middle">/</span>
-    </div>
-    <select class="custom-select" id='sTC' v-bind:value="this.$store.state.sTC" @change="CHANGE_VALUE('sTC', $event)">
-      <option value="1">1</option>
-      <option value="5">5</option>
-    </select>
-    <div class="input-group-append">
-      <span class="input-group-text">A</span>
-    </div>
-  </div>
-</section>
-
+    <v-layout wrap>
+      <v-flex d-flex xs6 @change="changeValueEvent('pTC', $event)">
+        <v-text-field
+          id="pTC"
+          type="number"
+          :value="this.$store.state.pTC"
+          background-color=""
+          label="Primaire TC"
+          placeholder="Entrez la valeur"
+          box
+          outline
+          suffix="A">
+        </v-text-field>
+      </v-flex>
+      <v-spacer></v-spacer>
+      <v-flex xs5 d-flex>
+        <v-select
+          @change="changeValue('sTC', $event)"
+          id="sTC"
+          :items="sTC"
+          v-model="$store.state.sTC"
+          item-value="value"
+          item-text="text"
+          label="Secondaire TC"
+          placeholder="Entrez la valeur"
+          outline
+          suffix="">
+        </v-select>
+      </v-flex>
+     </v-layout>
 </template>
 
 <script>
 export default {
+  data: () => ({
+    sTC: [
+      {
+        value: 1,
+        text: "1 A"
+      },
+      {
+        value: 5,
+        text: "5 A"
+      }
+    ]
+  }),
   components: {},
   methods: {
-    CHANGE_VALUE(key, event) {
+    changeValue(key, value) {
+      this.$store.commit("CHANGE_VALUE", {
+        path: [key],
+        value: value
+      });
+    },
+    changeValueEvent(key, value) {
       this.$store.commit("CHANGE_VALUE", {
         path: [key],
         value: event.target.value

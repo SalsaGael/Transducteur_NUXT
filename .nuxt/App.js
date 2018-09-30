@@ -6,18 +6,14 @@ import '..\\assets\\css\\app.styl'
 import '..\\css\\main.css'
 
 
-let layouts = {
+import _6f6c098b from '..\\layouts\\default.vue'
 
-  "_default": () => import('..\\layouts\\default.vue'  /* webpackChunkName: "layouts_default" */).then(m => m.default || m),
+const layouts = { "_default": _6f6c098b }
 
-  "_defaultDark": () => import('..\\layouts\\defaultDark.vue'  /* webpackChunkName: "layouts_defaultDark" */).then(m => m.default || m)
 
-}
-
-let resolvedLayouts = {}
 
 export default {
-  head: {"title":"Transducteur Nuxt Beta","meta":[{"charset":"utf-8"},{"name":"viewport","content":"width=device-width, initial-scale=1, user-scalable=0"},{"hid":"description","name":"description","content":"Nuxt.js project"},{"hid":"mobile-web-app-capable","name":"mobile-web-app-capable","content":"yes"},{"hid":"apple-mobile-web-app-title","name":"apple-mobile-web-app-title","content":"Calculette Transducteur"},{"hid":"theme-color","name":"theme-color","content":"#17a2b8"},{"hid":"og:type","name":"og:type","property":"og:type","content":"website"},{"hid":"og:title","name":"og:title","property":"og:title","content":"Calculette Transducteur"},{"hid":"og:site_name","name":"og:site_name","property":"og:site_name","content":"Calculette Transducteur"},{"hid":"og:description","name":"og:description","property":"og:description","content":"Calculette rapide de conversion pour tranducteur de mesure"}],"link":[{"rel":"icon","type":"image\u002Fx-icon","href":"\u002Ffavicon.ico"},{"rel":"stylesheet","type":"text\u002Fcss","href":"https:\u002F\u002Fstackpath.bootstrapcdn.com\u002Fbootstrap\u002F4.1.3\u002Fcss\u002Fbootstrap.min.css"},{"rel":"stylesheet","type":"text\u002Fcss","href":"https:\u002F\u002Fstackpath.bootstrapcdn.com\u002Ffont-awesome\u002F4.7.0\u002Fcss\u002Ffont-awesome.min.css"},{"rel":"stylesheet","href":"https:\u002F\u002Ffonts.googleapis.com\u002Fcss?family=Roboto:300,400,500,700|Material+Icons"},{"rel":"manifest","href":"\u002F_nuxt\u002Fmanifest.280aef6a.json"},{"rel":"shortcut icon","href":"\u002F_nuxt\u002Ficons\u002Ficon_64.00000000000.png"},{"rel":"apple-touch-icon","href":"\u002F_nuxt\u002Ficons\u002Ficon_512.00000000000.png","sizes":"512x512"}],"style":[],"script":[],"htmlAttrs":{"lang":"en"}},
+  head: {"title":"Transducteur Nuxt","meta":[{"charset":"utf-8"},{"name":"viewport","content":"width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"},{"hid":"description","name":"description","content":"Calculette rapide de conversion pour tranducteur de mesure"},{"hid":"mobile-web-app-capable","name":"mobile-web-app-capable","content":"yes"},{"hid":"apple-mobile-web-app-title","name":"apple-mobile-web-app-title","content":"Calculette Transducteur"},{"hid":"theme-color","name":"theme-color","content":"#17a2b8"},{"hid":"og:type","name":"og:type","property":"og:type","content":"website"},{"hid":"og:title","name":"og:title","property":"og:title","content":"Calculette Transducteur"},{"hid":"og:site_name","name":"og:site_name","property":"og:site_name","content":"Calculette Transducteur"},{"hid":"og:description","name":"og:description","property":"og:description","content":"Calculette rapide de conversion pour tranducteur de mesure"}],"link":[{"rel":"icon","type":"image\u002Fx-icon","href":"\u002Ffavicon.ico"},{"rel":"apple-touch-icon","size":"180x180","href":"\u002Fapple-touch-icon.png"},{"rel":"stylesheet","href":"https:\u002F\u002Ffonts.googleapis.com\u002Fcss?family=Roboto:300,400,500,700|Material+Icons"},{"rel":"manifest","href":"\u002F_nuxt\u002Fmanifest.280aef6a.json"},{"rel":"shortcut icon","href":"\u002F_nuxt\u002Ficons\u002Ficon_64.00000000000.png"}],"style":[],"script":[],"htmlAttrs":{"lang":"en"}},
   render(h, props) {
     const loadingEl = h('nuxt-loading', { ref: 'loading' })
     const layoutEl = h(this.layout || 'nuxt')
@@ -78,34 +74,24 @@ export default {
       }
     },
     
-    setLayout (layout) {
-      if (!layout || !resolvedLayouts['_' + layout]) layout = 'default'
+    
+    setLayout(layout) {
+      if (!layout || !layouts['_' + layout]) {
+        layout = 'default'
+      }
       this.layoutName = layout
-      let _layout = '_' + layout
-      this.layout = resolvedLayouts[_layout]
+      this.layout = layouts['_' + layout]
       return this.layout
     },
-    loadLayout (layout) {
-      if (!layout || !(layouts['_' + layout] || resolvedLayouts['_' + layout])) layout = 'default'
-      let _layout = '_' + layout
-      if (resolvedLayouts[_layout]) {
-        return Promise.resolve(resolvedLayouts[_layout])
+    loadLayout(layout) {
+      if (!layout || !layouts['_' + layout]) {
+        layout = 'default'
       }
-      return layouts[_layout]()
-      .then((Component) => {
-        resolvedLayouts[_layout] = Component
-        delete layouts[_layout]
-        return resolvedLayouts[_layout]
-      })
-      .catch((e) => {
-        if (this.$nuxt) {
-          return this.$nuxt.error({ statusCode: 500, message: e.message })
-        }
-      })
+      return Promise.resolve(layouts['_' + layout])
     }
+    
   },
   components: {
     NuxtLoading
   }
 }
-

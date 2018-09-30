@@ -1,13 +1,14 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 
+const _7563e4e8 = () => import('..\\pages\\test.vue' /* webpackChunkName: "pages_test" */).then(m => m.default || m)
+const _373e0f7c = () => import('..\\pages\\pr.vue' /* webpackChunkName: "pages_pr" */).then(m => m.default || m)
+const _364e7feb = () => import('..\\pages\\pa.vue' /* webpackChunkName: "pages_pa" */).then(m => m.default || m)
+const _c3ee5000 = () => import('..\\pages\\params.vue' /* webpackChunkName: "pages_params" */).then(m => m.default || m)
+const _86908a20 = () => import('..\\pages\\tens.vue' /* webpackChunkName: "pages_tens" */).then(m => m.default || m)
+const _056d4170 = () => import('..\\pages\\index.vue' /* webpackChunkName: "pages_index" */).then(m => m.default || m)
+
 Vue.use(Router)
-
-const _26e7430f = () => import('..\\pages\\tens.vue' /* webpackChunkName: "pages_tens" */).then(m => m.default || m)
-const _96a0f86c = () => import('..\\pages\\pa.vue' /* webpackChunkName: "pages_pa" */).then(m => m.default || m)
-const _94c1d94a = () => import('..\\pages\\pr.vue' /* webpackChunkName: "pages_pr" */).then(m => m.default || m)
-const _4dea49ee = () => import('..\\pages\\index.vue' /* webpackChunkName: "pages_index" */).then(m => m.default || m)
-
 
 
 if (process.client) {
@@ -32,7 +33,7 @@ const scrollBehavior = function (to, from, savedPosition) {
     position = savedPosition
   }
 
-  return new Promise(resolve => {
+  return new Promise((resolve) => {
     // wait for the out transition to complete (if necessary)
     window.$nuxt.$once('triggerScroll', () => {
       // coords will be used if no selector is provided,
@@ -67,23 +68,33 @@ export function createRouter () {
     scrollBehavior,
     routes: [
 		{
-			path: "/tens",
-			component: _26e7430f,
-			name: "tens"
-		},
-		{
-			path: "/pa",
-			component: _96a0f86c,
-			name: "pa"
+			path: "/test",
+			component: _7563e4e8,
+			name: "test"
 		},
 		{
 			path: "/pr",
-			component: _94c1d94a,
+			component: _373e0f7c,
 			name: "pr"
 		},
 		{
+			path: "/pa",
+			component: _364e7feb,
+			name: "pa"
+		},
+		{
+			path: "/params",
+			component: _c3ee5000,
+			name: "params"
+		},
+		{
+			path: "/tens",
+			component: _86908a20,
+			name: "tens"
+		},
+		{
 			path: "/",
-			component: _4dea49ee,
+			component: _056d4170,
 			name: "index"
 		}
     ],

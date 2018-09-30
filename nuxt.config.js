@@ -3,34 +3,28 @@ module.exports = {
    ** Headers of the page
    */
   head: {
-    title: 'Transducteur Nuxt Beta',
+    title: 'Transducteur Nuxt',
     meta: [{
         charset: 'utf-8'
       },
       {
         name: 'viewport',
-        content: 'width=device-width, initial-scale=1, user-scalable=0'
+        content: 'width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no'
       },
       {
         hid: 'description',
         name: 'description',
-        content: 'Nuxt.js project'
+        content: 'Calculette rapide de conversion pour tranducteur de mesure'
       }
     ],
     link: [{
         rel: 'icon',
         type: 'image/x-icon',
         href: '/favicon.ico'
-      },
-      {
-        rel: 'stylesheet',
-        type: 'text/css',
-        href: 'https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css'
-      },
-      {
-        rel: 'stylesheet',
-        type: 'text/css',
-        href: 'https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css'
+      }, {
+        rel: 'apple-touch-icon',
+        size: '180x180',
+        href: '/apple-touch-icon.png'
       },
       {
         rel: 'stylesheet',
@@ -77,10 +71,6 @@ module.exports = {
     }
   ],
   build: {
-    vendor: ['vuetify'],
-    /*vendor: ['vuetify'],
-     ** Run ESLint on save
-     */
     extend(config, {
       isDev,
       isClient

@@ -1,4 +1,6 @@
-importScripts('/_nuxt/workbox.42554690.js')
+importScripts('/_nuxt/workbox.678c6960.js')
+
+
 
 workbox.precaching.precacheAndRoute([], {
   "cacheId": "Nuxt",

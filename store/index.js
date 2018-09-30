@@ -7,7 +7,8 @@ const createStore = () => {
     state: {
       start: "pa",
       theme: "default",
-      KU: 2200,
+      isDark: true,
+      KU: 4000,
       pTC: 1500,
       sTC: 5,
       fpaBT: 1039,
@@ -16,13 +17,13 @@ const createStore = () => {
       smaMaxPA: 20,
       smaMinPR: -20,
       smaMaxPR: 20,
-      fuHT: "1",
+      fuBT: 1,
       smaMinU: 4,
       smaMaxU: 20,
-      uBTMin: 0,
-      uBTMax: 124,
-      uMin: 0,
-      uMax: 272800,
+      uMinBT: 0,
+      uMaxBT: 124,
+      uMinHT: 0,
+      uMaxHT: 272800,
       inputPAHT: "Entrez la valeur",
       inputIABT: "Entrez la valeur",
       inputSAMA: "Entrez la valeur",
@@ -59,22 +60,22 @@ const createStore = () => {
     actions: {
       CALC_U(context) {
         context.commit("CHANGE_VALUE", {
-          path: "uMin",
-          value: this.state.uBTMin * this.state.KU
+          path: "uMinHT",
+          value: this.state.uMinBT * this.state.KU
         });
         context.commit("CHANGE_VALUE", {
-          path: "uMax",
-          value: this.state.uBTMax * this.state.KU
+          path: "uMaxHT",
+          value: this.state.uMaxBT * this.state.KU
         });
       },
       CALC_U_BT(context) {
         context.commit("CHANGE_VALUE", {
-          path: "uBTMin",
-          value: this.state.uMin / this.state.KU
+          path: "uMinBT",
+          value: this.state.uMinHT / this.state.KU
         });
         context.commit("CHANGE_VALUE", {
-          path: "uBTMax",
-          value: this.state.uMax / this.state.KU
+          path: "uMaxBT",
+          value: this.state.uMaxHT / this.state.KU
         });
       }
     },
@@ -109,16 +110,16 @@ const createStore = () => {
         return state.smaMaxU - state.smaMinU;
       },
       bvMin(state) {
-        return state.uMin / state.KU / Math.sqrt(3);
+        return state.uMinHT / state.KU / Math.sqrt(3);
       },
       bvMax(state) {
-        return state.uMax / state.KU / Math.sqrt(3);
+        return state.uMaxHT / state.KU / Math.sqrt(3);
       },
       buMin(state) {
-        return state.uMax / state.KU;
+        return state.uMaxHT / state.KU;
       },
       buMax(state) {
-        return state.uMax / state.KU;
+        return state.uMaxHT / state.KU;
       },
       faMin(state, getters) {
         return (

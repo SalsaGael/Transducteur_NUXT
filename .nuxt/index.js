@@ -1,4 +1,3 @@
-import 'es6-promise/auto'
 import Vue from 'vue'
 import Meta from 'vue-meta'
 import { createRouter } from './router.js'
@@ -12,8 +11,8 @@ import { setContext, getLocation, getRouteData } from './utils'
 import { createStore } from './store.js'
 
 /* Plugins */
-import nuxt_plugin_swplugin_656c7192 from 'nuxt_plugin_swplugin_656c7192' // Source: ./sw.plugin.js (ssr: false)
-import nuxt_plugin_nuxticons_46cdfc6f from 'nuxt_plugin_nuxticons_46cdfc6f' // Source: ./nuxt-icons.js
+import nuxt_plugin_swplugin_71dced51 from 'nuxt_plugin_swplugin_71dced51' // Source: ./sw.plugin.js (ssr: false)
+import nuxt_plugin_nuxticons_6f260ee0 from 'nuxt_plugin_nuxticons_6f260ee0' // Source: ./nuxt-icons.js
 import nuxt_plugin_localStorage_0afba2b0 from 'nuxt_plugin_localStorage_0afba2b0' // Source: ..\\plugins\\localStorage.js (ssr: false)
 import nuxt_plugin_vuetify_512965c0 from 'nuxt_plugin_vuetify_512965c0' // Source: ..\\plugins\\vuetify.js
 
@@ -41,12 +40,17 @@ Vue.use(Meta, {
 const defaultTransition = {"name":"page","mode":"out-in","appear":false,"appearClass":"appear","appearActiveClass":"appear-active","appearToClass":"appear-to"}
 
 async function createApp (ssrContext) {
-  const router = createRouter(ssrContext)
+  const router = await createRouter(ssrContext)
 
   
   const store = createStore(ssrContext)
   // Add this.$router into store actions/mutations
   store.$router = router
+    
+    // Fix SSR caveat https://github.com/nuxt/nuxt.js/issues/3757#issuecomment-414689141
+    const registerModule = store.registerModule
+    store.registerModule = (path, rawModule, options) => registerModule.call(store, path, rawModule, Object.assign({ preserveState: process.client }, options))
+    
   
 
   // Create Root instance
@@ -144,7 +148,7 @@ async function createApp (ssrContext) {
   }
 
   
-  if (process.browser) {
+  if (process.client) {
     // Replace store state before plugins execution
     if (window.__NUXT__ && window.__NUXT__.state) {
       store.replaceState(window.__NUXT__.state)
@@ -154,11 +158,11 @@ async function createApp (ssrContext) {
 
   // Plugin execution
   
-  if (typeof nuxt_plugin_nuxticons_46cdfc6f === 'function') await nuxt_plugin_nuxticons_46cdfc6f(app.context, inject)
+  if (typeof nuxt_plugin_nuxticons_6f260ee0 === 'function') await nuxt_plugin_nuxticons_6f260ee0(app.context, inject)
   if (typeof nuxt_plugin_vuetify_512965c0 === 'function') await nuxt_plugin_vuetify_512965c0(app.context, inject)
   
-  if (process.browser) { 
-    if (typeof nuxt_plugin_swplugin_656c7192 === 'function') await nuxt_plugin_swplugin_656c7192(app.context, inject)
+  if (process.client) { 
+    if (typeof nuxt_plugin_swplugin_71dced51 === 'function') await nuxt_plugin_swplugin_71dced51(app.context, inject)
     if (typeof nuxt_plugin_localStorage_0afba2b0 === 'function') await nuxt_plugin_localStorage_0afba2b0(app.context, inject)
   }
 

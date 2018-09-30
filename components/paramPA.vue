@@ -3,66 +3,146 @@
     <p class="mb-1">
       <a>Paramètres Capteur P</a>
     </p>
-
-    <div class="input-group mb-2">
-      <div class="input-group-prepend">
-        <label class="input-group-text" for="fpaBT">Famille BT</label>
-      </div>
-      <select id="fpaBT" class="custom-select" v-bind:value="this.$store.state.fpaBT" @change="changeValueEvent('fpaBT', $event)">
-        <option value="0">Plage réglée</option>
-        <option value="602.2">P1 602,2</option>
-        <option value="744.8">P2 744,8</option>
-        <option value="866">P3 866</option>
-        <option value="1039">P4 1039</option>
-        <option value="1212">P5 1212</option>
-        <option value="1464">P6 1464</option>
-        <option value="1732">P8 1732</option>
-        <option value="2148">P9 2148</option>
-      </select>
-      <div class="input-group-append">
-        <span class="input-group-text">± W</span>
-      </div>
-    </div>
-
-    <div class="input-group mb-2">
-      <div class="input-group-prepend">
-        <label class="input-group-text" for="paMaxHT">Plage HT</label>
-      </div>
-      <input class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm" id='paMaxHT' type="number" v-bind:value="Math.round(this.$store.getters.paMaxHT / 10000) / 100"
-        @change="changepaMaxHT('paMaxHT', $event)" />
-      <div class="input-group-append">
-        <span class="input-group-text">± MW</span>
-      </div>
-    </div>
-
-    <div class="input-group mb-2">
-      <div class="input-group-prepend">
-        <label for="smaMinPA" class="input-group-text">Sortie</label>
-      </div>
-      <select id='smaMinPA' class="custom-select" v-bind:value="this.$store.state.smaMinPA" @change="changeValueEvent('smaMinPA', $event)">
-        <option value="-20">-20</option>
-        <option value="-10">-10</option>
-        <option value="-5">-5</option>
-        <option value="0">0</option>
-        <option value="4">4</option>
-      </select>
-      <span class="input-group-text input-group-middle">à</span>
-      <select id='smaMaxPA' class="custom-select" v-bind:value="this.$store.state.smaMaxPA" @change="changeValueEvent('smaMaxPA', $event)">
-        <option value="5">5</option>
-        <option value="10">10</option>
-        <option value="20">20</option>
-      </select>
-      <div class="input-group-append">
-        <span class="input-group-text">mA</span>
-      </div>
-    </div>
+   <v-layout wrap>
+      <v-flex d-flex xs12 @change="changeValueEvent('paMaxHT', $event)">
+        <v-text-field
+          id="paMaxHT"
+          type="number"
+          :value="$store.state.paMaxHT"
+          background-color=""
+          label="Puissance active HT min/max"
+          placeholder="Entrez la valeur"
+          box
+          outline
+          suffix="MW">
+        </v-text-field>
+      </v-flex>
+      <v-spacer></v-spacer>
+      <v-flex xs12 d-flex>
+        <v-select
+          @change="changeValue('fpaBT', $event)"
+          id="fpaBT"
+          :items="fpaBT"
+          v-model="$store.state.fpaBT"
+          item-value="value"
+          item-text="text"
+          label="Puissance active BT"
+          placeholder="Choissisez la famille"
+          outline
+          suffix="">
+        </v-select>
+      </v-flex>
+            <v-flex xs6 d-flex>
+        <v-select
+          @change="changeValue('smaMinPA', $event)"
+          id="smaMinPA"
+          :items="smaMinPA"
+          v-model="$store.state.smaMinPA"
+          item-value="value"
+          item-text="text"
+          label="Sortie procédé min"
+          placeholder="Choissisez la valeur"
+          outline
+          suffix="">
+        </v-select>
+      </v-flex>
+      <v-spacer></v-spacer>
+            <v-flex xs6 d-flex>
+        <v-select
+          @change="changeValue('smaMaxPA', $event)"
+          id="smaMaxPA"
+          :items="smaMaxPA"
+          v-model="$store.state.smaMaxPA"
+          item-value="value"
+          item-text="text"
+          label="Sortie procédé max"
+          placeholder="Choissisez la valeur"
+          outline
+          suffix="">
+        </v-select>
+      </v-flex>
+     </v-layout>
   </section>
-  
 </template>
 
 <script>
 export default {
-  components: {},
+data: () => ({
+    fpaBT: [
+      {
+        value: 0,
+        text: "Plage réglée"
+      },
+      {
+        value: 602.2,
+        text: "P1 - 602.2 W"
+      },
+      {
+        value: 744.8,
+        text: "P2 - 744.8 W"
+      },
+      {
+        value: 866,
+        text: "P3 - 866 W"
+      },
+      {
+        value: 1039,
+        text: "P4 - 1039 W"
+      },
+      {
+        value: 1212,
+        text: "P5 - 1212 W"
+      },
+      {
+        value: 1464,
+        text: "P6 - 1464"
+      },
+      {
+        value: 1732,
+        text: "P8 - 1732 W"
+      },
+      {
+        value: 2250,
+        text: "P9 - 2148 W"
+      }
+    ],
+    smaMinPA: [
+      {
+        value: -20,
+        text: "-20 mA"
+      },
+           {
+        value: -10,
+        text: "-10 mA"
+      },
+           {
+        value: -5,
+        text: "-5 mA"
+      },
+           {
+        value: -0,
+        text: "0 mA"
+      },
+           {
+        value: 4,
+        text: "4 mA"
+      }
+    ],
+       smaMaxPA: [
+                    {
+        value: 5,
+        text: "5 mA"
+      },
+           {
+        value: 10,
+        text: "10 mA"
+      },
+           {
+        value: 20,
+        text: "20 mA"
+      }
+    ]
+  }),
   methods: {
     changeValue(key, value) {
       this.$store.commit("CHANGE_VALUE", {

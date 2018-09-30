@@ -4,72 +4,144 @@
   <p class="mb-1">
      <a>Paramètres du capteur U</a>
   </p>
-  <div class="input-group mb-2">
-    <div class="input-group-prepend">
-      <label class="input-group-text" for="fuHT">Famille BT</label>
-    </div>
-    <select id="fuHT" class="custom-select" v-bind:value="this.$store.state.fuHT" @change="changePlageU($event)">
-      <option value="0">Plage réglée</option>
-      <option value="1">U1  0 à 124/√3 V</option>
-      <option value="2">U2  78/√3 à 121,25/√3 V</option>
-    </select>
-  </div>
-  <div class="input-group mb-2">
-    <div class="input-group-prepend">
-      <label class="input-group-text" for="uMin">Plage HT</label>
-    </div>
-    <input class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm" id="uMin" type="number" v-bind:value="Math.round(this.$store.state.uMin / 10) /100" @change="changeU('uMin', $event)"/>
-      <span class="input-group-text input-group-middle">à</span>
-    <input class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm" id="uMax" type="number" v-bind:value="Math.round(this.$store.state.uMax / 10) /100" @change="changeU('uMax', $event)"/>
-    <div class="input-group-append">
-      <span class="input-group-text">kV</span>
-    </div>
-  </div>
-  <div class="input-group mb-2">
-    <div class="input-group-prepend">
-      <label for="smaMinU" class="input-group-text">Sortie</label>
-    </div>
-    <select id='smaMinU' class="custom-select" v-bind:value="this.$store.state.smaMinU" @change="changeValueEvent('smaMinU', $event)">
-      <option value="0">0</option>
-      <option value="4">4</option>
-    </select>
-    <span class="input-group-text input-group-middle">à</span>
-    <select id='smaMaxU' class="custom-select" v-bind:value="this.$store.state.smaMaxU" @change="changeValueEvent('smaMaxU', $event)">
-      <option value="5">5</option>
-      <option value="10">10</option>
-      <option value="20">20</option>
-    </select>
-    <div class="input-group-append">
-      <span class="input-group-text">mA</span>
-    </div>
-  </div>
-</section>
-
+ <v-layout wrap>
+      <v-flex d-flex xs5 @change="changeU('uMinHT', $event)">
+        <v-text-field
+          id="uMinHT"
+          type="number"
+          :value="$store.state.uMinHT"
+          background-color=""
+          label="Tension HT min"
+          placeholder="Entrez la valeur"
+          box
+          outline
+          suffix="kV">
+        </v-text-field>
+      </v-flex>
+      <v-spacer></v-spacer>
+         <v-flex d-flex xs5 @change="changeU('uMaxHT', $event)">
+        <v-text-field
+          id="uMaxHT"
+          type="number"
+          :value="$store.state.uMaxHT"
+          background-color=""
+          label="Tension HT max"
+          placeholder="Entrez la valeur"
+          box
+          outline
+          suffix="kV">
+        </v-text-field>
+      </v-flex>
+      <v-flex xs12 d-flex>
+        <v-select
+          @change="changePlageU('fuBT', $event)"
+          id="fuBT"
+          :items="fuBT"
+          v-model="$store.state.fuBT"
+          item-value="value"
+          item-text="text"
+          label="Plage tension BT"
+          placeholder="Choissisez la famille"
+          outline
+          suffix="">
+        </v-select>
+      </v-flex>
+            <v-flex>
+        <v-select
+          @change="changeValue('smaMinU', $event)"
+          id="smaMinU"
+          :items="smaMinU"
+          v-model="$store.state.smaMinU"
+          item-value="value"
+          item-text="text"
+          label="Sortie procédé min"
+          placeholder="Choissisez la valeur"
+          outline
+          suffix="">
+        </v-select>
+      </v-flex>
+      <v-spacer></v-spacer>
+            <v-flex>
+        <v-select
+          @change="changeValue('smaMaxU', $event)"
+          id="smaMaxU"
+          :items="smaMaxU"
+          v-model="$store.state.smaMaxU"
+          item-value="value"
+          item-text="text"
+          label="Sortie procédé max"
+          placeholder="Choissisez la valeur"
+          outline
+          suffix="">
+        </v-select>
+      </v-flex>
+     </v-layout>
+     </section>
 </template>
 
 <script>
 export default {
   data: function() {
-    return {};
+    return { 
+      fuBT: [
+      {
+        value: 0,
+        text: "Plage réglée"
+      },
+      {
+        value: 1,
+        text: "U1  0 à 124/√3 V"
+      },
+      {
+        value: 2,
+        text: "U2  78/√3 à 121,25/√3 V"
+      }
+    ],
+        smaMinU: [
+           {
+        value: 0,
+        text: "0 mA"
+      },
+           {
+        value: 4,
+        text: "4 mA"
+      }
+    ],
+       smaMaxU: [
+                    {
+        value: 5,
+        text: "5 mA"
+      },
+           {
+        value: 10,
+        text: "10 mA"
+      },
+           {
+        value: 20,
+        text: "20 mA"
+      }
+    ]
+    };
   },
   components: {},
   methods: {
     changeU(key, event) {
-      this.changeValue("fuHT", 0);
+      this.changeValue("fuBT", 0);
       this.changeValue(key, event.target.value * 1000);
       this.$store.dispatch("CALC_U_BT");
     },
-    changePlageU($event) {
-      this.changeValueEvent("fuHT", $event);
-      if (this.$store.state.fuHT == 0) {
-        this.changeValue("uBTMin", "");
-        this.changeValue("uBTMax", "");
-      } else if (this.$store.state.fuHT == 1) {
-        this.changeValue("uBTMin", 0);
-        this.changeValue("uBTMax", 124);
-      } else if (this.$store.state.fuHT == 2) {
-        this.changeValue("uBTMin", 78);
-        this.changeValue("uBTMax", 121.25);
+    changePlageU(key, event) {
+      console.log(event)
+      this.changeValue("fuBT", event);
+      if (this.$store.state.fuBT === 0) {
+        this.changeValue("uMinBT", "");
+        this.changeValue("uMaxBT", "");
+      } else if (this.$store.state.fuBT === 1) {
+        this.changeValue("uMinBT", 0);
+        this.changeValue("uMaxBT", 124);
+      } else if (this.$store.state.fuBT === 2) {
+        this.changeValue("uMinBT", 78);
+        this.changeValue("uMaxBT", 121.25);
       }
       this.$store.dispatch("CALC_U");
     },

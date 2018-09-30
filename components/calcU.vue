@@ -1,49 +1,65 @@
  <template>
- <section>
-     
- <div class="bloccalc" id="bloccalc">
-    <p class="mb-1">
-        <a>Calcul des valeurs</a>
-    </p>
-    <div class="input-group mb-2">
-        <div class="input-group-prepend">
-            <label for="inputUHT" class="input-group-text text-light bg-secondary input-ant">HT Triphasé</label>
-        </div>
-        <input type="number" id="inputUHT" v-bind:value="Math.round(this.$store.state.inputUHT / 10) /100" placeholder="Entrez la valeur" @change="inputUHT('inputUHT', $event)" class="form-control" aria-label="inputSUMAll" aria-describedby="inputGroup-sizing-sm">
-        <div class="input-group-append">
-        <span class="input-group-text text-light bg-secondary input-post">kV</span>
-        </div>
+  <section>
+    <div class="bloccalc" id="bloccalc">
+      <p class="mb-1">
+        <a>Calculette tension quadratique</a>
+      </p>
+      <v-flex xs12 @change="inputUHT('inputUHT', $event)">
+        <v-text-field
+          id="inputUHT"
+          type="number"
+          :value="Math.round(this.$store.state.inputUHT / 10) /100"
+          background-color="red"
+          label="Tension HT triphasé"
+          placeholder="Entrez la valeur"
+          box
+          outline
+          suffix="kV">
+        </v-text-field>
+      </v-flex>
+            <v-flex xs12 @change="inputVHT('inputVHT', $event)">
+        <v-text-field
+          id="inputVHT"
+          type="number"
+          :value="Math.round(this.$store.state.inputVHT / 10) / 100"
+          background-color="orange"
+          label="Tension HT monophasé"
+          placeholder="Entrez la valeur"
+          box
+          outline
+          suffix="kV">
+        </v-text-field>
+      </v-flex>
+      <v-flex xs12 @change="inputVBT('inputVBT', $event)">
+        <v-text-field
+          id="inputVBT"
+          type="number"
+          :value="Math.round(this.$store.state.inputVBT * 100) / 100"
+          background-color="blue"
+          label="Tension BT monophasé"
+          placeholder="Entrez la valeur"
+          box
+          outline
+          suffix="V">
+        </v-text-field>
+      </v-flex>
+      <v-flex xs12  @change="inputSUMA('inputSUMA', $event)">
+        <v-text-field
+          id="inputSUMA"
+          type="number"
+          :value="Math.round(this.$store.state.inputSUMA * 100) / 100"
+          background-color="green"
+          label="Sortie procédé"
+          placeholder="Entrez la valeur"
+          box
+          outline
+          suffix="mA">
+        </v-text-field>
+      </v-flex>
     </div>
-    <div class="input-group mb-2">
-        <div class="input-group-prepend">
-            <label for="inputVHT" class="input-group-text text-light bg-primary input-ant">HT Monophasé</label>
-        </div>
-        <input type="number" id="inputVHT" v-bind:value="Math.round(this.$store.state.inputVHT / 10) / 100" placeholder="Entrez la valeur" @change="inputVHT('inputVHT', $event)" class="form-control" aria-label="inputSUMAll" aria-describedby="inputGroup-sizing-sm">
-        <div class="input-group-append">
-            <span class="input-group-text text-light bg-primary input-post">kV</span>
-        </div>
-    </div>
-    <div class="input-group mb-2">
-        <div class="input-group-prepend">
-            <label for="inputVBT" class="input-group-text text-light bg-danger input-ant">BT Monophasé</label>
-        </div>
-        <input type="number" id="inputVBT" v-bind:value="Math.round(this.$store.state.inputVBT * 100) / 100" placeholder="Entrez la valeur" @change="inputVBT('inputVBT', $event)" class="form-control" aria-label="inputSUMAll" aria-describedby="inputGroup-sizing-sm">
-        <div class="input-group-append">
-            <span class="input-group-text text-light bg-danger input-post">V</span>
-        </div>
-    </div>
-    <div class="input-group mb-2">
-        <div class="input-group-prepend">
-            <label for="inputSUMA" class="input-group-text text-light bg-success input-ant">Sortie procédé</label>
-        </div>
-            <input type="number" id="inputSUMA" v-bind:value="Math.round(this.$store.state.inputSUMA * 100) / 100" placeholder="Entrez la valeur" @change="inputSUMA('inputSUMA', $event)" class="form-control" aria-label="inputSUMAll" aria-describedby="inputGroup-sizing-sm">
-        <div class="input-group-append">
-            <span class="input-group-text text-light bg-success input-post">mA</span>
-        </div>
-    </div>
-</div>
-    </section>
-    </template>
+  </section>
+</template>
+
     <script>
 export default {
   components: {},

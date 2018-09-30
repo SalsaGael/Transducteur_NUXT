@@ -1,41 +1,75 @@
 <template>
-
-<section>
-  <p class="mb-1">
-    <a>Paramètres TT</a>
-  </p>
-  <div class="input-group mb-2">
-    <div class="input-group-prepend">
-      <label for="KU" class="input-group-text">Rapport</label>
-    </div>
-    <select id="KU" class="custom-select" v-bind:value="this.$store.state.KU" @change="changeValueEvent('KU', $event); calcU()">
-      <option value="150">15 kV / 100 V</option>
-      <option value="200">20 kV / 100 V</option>
-      <option value="450">45 kV / 100 V</option>
-      <option value="600">60 kV / 100V</option>
-      <option value="630">63 kV / 100V</option>
-      <option value="900">90 kV / 100 V</option>
-      <option value="1500">150 kV / 100V</option>
-      <option value="2200">220 kV / 100V</option>
-      <option value="2250">225 kV / 100V</option>
-      <option value="4000">400 kV / 100V</option>
-    </select>
-  </div>
-</section>
-
+  <v-layout>
+    <v-flex xs12>
+      <v-select
+        @change="changeValue('KU', $event)"
+        id="KU"
+        :items="KU"
+        v-model="$store.state.KU"
+        item-value="value"
+        item-text="text"
+        label="Rapport TT"
+        placeholder="Entrez la valeur"
+        outline
+        default
+        suffix="">
+      </v-select>
+    </v-flex>
+  </v-layout>
 </template>
+
 <script>
 export default {
+  data: () => ({
+    KU: [
+      {
+        value: 150,
+        text: "15 kV / 100 V"
+      },
+      {
+        value: 200,
+        text: "20 kV / 100 V"
+      },
+      {
+        value: 450,
+        text: "45 kV / 100 V"
+      },
+      {
+        value: 600,
+        text: "60 kV / 100 V"
+      },
+      {
+        value: 630,
+        text: "63 kV / 100 V"
+      },
+      {
+        value: 900,
+        text: "90 kV / 100 V"
+      },
+      {
+        value: 1500,
+        text: "150 kV / 100 V"
+      },
+      {
+        value: 2200,
+        text: "220 kV / 100 V"
+      },
+      {
+        value: 2250,
+        text: "225 kV / 100 V"
+      },
+      {
+        value: 4000,
+        text: "400 kV / 100 V"
+      }
+    ]
+  }),
   components: {},
   methods: {
-    calcU() {
-      this.$store.dispatch("CALC_U");
-      this.$store.dispatch("CALC_U_BT");
-    },
-    changeValueEvent(key, event) {
+    changeValue(key, value) {
       this.$store.commit("CHANGE_VALUE", {
         path: [key],
-        value: event.target.value
+        value: value
       });
     }
   }

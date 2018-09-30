@@ -1,36 +1,29 @@
 <template>
-
-  <section class="container">
-<div>
-  <img src="favicon.ico">
-  <h2>Choissisez le type de capteur</h2>
-</div>  
-<div>
-         <nuxt-link to="/pa">
-			    <v-btn class="btn-dark" type="v-btn">
-                   Puissance active
-			    </v-btn>
-            </nuxt-link>
-            <nuxt-link to="/pr">
-			    <v-btn class="btn-dark" type="v-btn">
-				    Puissance réactive
-			    </v-btn>
-            </nuxt-link>
-            <nuxt-link to="/tens">
-			    <v-btn class="btn-dark" type="v-btn">
-				    Tension quadratique
-			    </v-btn>
-            </nuxt-link>
-</div>
-
-  </section>
+  <v-container>
+    <img src="favicon.ico">
+    <div>
+      <nuxt-link tag="v-btn" to="/pa">
+        Calculette puissance active
+      </nuxt-link>
+      <nuxt-link tag="v-btn" to="/pr">
+        Calculette puissance réactive
+      </nuxt-link>
+      <nuxt-link tag="v-btn" to="/tens">
+        Calculette tension quadratique
+      </nuxt-link>
+      <nuxt-link tag="v-btn" to="/params">
+        Paramétres capteurs
+      </nuxt-link>
+    </div>
+  </v-container>
 </template>
 
 <script>
+export default {};
 </script>
 
 <style scoped>
-.container,
+v-container,
 div {
   display: flex;
   flex-direction: column;
