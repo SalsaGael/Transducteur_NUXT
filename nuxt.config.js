@@ -20,11 +20,11 @@ module.exports = {
     link: [{
         rel: 'icon',
         type: 'image/x-icon',
-        href: '/favicon.ico'
+        href: '/img/favicon.ico'
       }, {
         rel: 'apple-touch-icon',
         size: '180x180',
-        href: '/apple-touch-icon.png'
+        href: '/img/apple-touch-icon.png'
       },
       {
         rel: 'stylesheet',

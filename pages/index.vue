@@ -1,6 +1,6 @@
 <template>
   <v-container>
-    <img src="favicon.ico">
+    <img src="/img/favicon.ico">
     <div>
       <nuxt-link tag="v-btn" to="/pa">
         Calculette puissance active
